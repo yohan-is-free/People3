@@ -37,4 +37,8 @@ public class HomeController {
 		return "join";
 	}
 	
+	@RequestMapping(value = "/boardlist.do")
+	public String boardlistForm() {
+		return "boardlist";
+	}
 }
