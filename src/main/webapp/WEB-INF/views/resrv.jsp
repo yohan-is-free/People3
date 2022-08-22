@@ -4,6 +4,7 @@
 <html lang="ko">
 	<head>
 		<title>Tennis_Reservation</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 	</head>
@@ -25,7 +26,7 @@
 				<div class="inner">
 					<nav class="gnb">
 						<ul>
-							<li class="pc"><a class="home">메인</a></li>
+							<li class="pc"><a href = "./" class="home">메인</a></li>
 							<li><a href="" class="cart">예약내역</a></li>
 							<li><a href="" class="mypage">마이페이지</a></li>
 						</ul>
@@ -34,7 +35,7 @@
 					<div class="allmenu_area" style="display: none;">
 						<h2 class="tit_type02">메뉴바로가기</h2>
 						<ul class="all_menu">
-							<li><a href="./resrv.do">예약신청</a></li>
+							<li><a>예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
 							<li><a href="">신청방법안내</a></li>
 							<li><a href="">시설이용안내</a></li>
@@ -70,57 +71,83 @@
 				<div class="section sticky_area">
 					<div class="inner">
 						<ul class="sticky_menu">
-							<li><a href="./resrv.do">예약신청</a></li>
+							<li><a>예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
 							<li><a href="">신청방법안내</a></li>
 							<li><a href="">시설이용안내</a></li>
 						</ul>
 					</div>
 				</div>
+				
 
 				<div id="content">
-					<div class="section info_area01">
-						<div class="inner">
-							<div class="info_con01">
-								<h2 class="tit_type01">테니스장/레슨<br><strong>예약신청</strong></h2>
-								<a href="./resrv.do" class="btn_app">예약신청</a>
-								<span class="bg_img"><img src="resources/images/content/tennisman.png" alt=""></span>
-							</div>
-							<div class="info_con02">
-								<h2 class="tit_type01">공지사항</h2>
-								<ul class="notice">
-									<li>
-										<a href="">
-											실외 코트 개보수 공사 알림 (22.8.22~ ) 
-										</a>
-									</li>
-								
-									<li>
-										<a href="">
-											테니스 대회 안내 (2022년 8월) 
-										</a>
-									</li>
-								</ul>
-								<a href="" class="con_more" title="공지사항 더보기">더보기</a>
-							</div>
-							<div class="info_con03">
-								<h2 class="tit_type01">고객센터 안내</h2>
-								<p class="txt">테니스장 <strong>02-2180-3778</strong></p>
-							</div>
-						</div>
+					<div style = "width : 75%; margin: auto; padding-top : 40px;">
+						<h2><b>테니스장 예약</b></h2>
+						<table class = "table table-borderless" style = 'text-align : center; margin : 20px;'>
+						  <tbody>
+						    <tr>
+						      <td class = 'tennis_area active'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>						      
+						    </tr>
+						    <tr>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>						      
+						    </tr>
+						    <tr>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>						      
+						    </tr>
+						    <tr>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>
+						      <td class = 'tennis_area'><b>테니스장</b></td>						      
+						    </tr>
+						  </tbody>
+						</table>
 					</div>
-
-					<div class="section info_area02">
-						<div class="inner">
-							<div class="info_con">
-								<h2 class="tit_type01">예약신청 안내</h2>
-								<p class="con_txt">예약신청이 어려우신가요? <br>안내 페이지에서 자세하게 설명 드립니다.</p>
-								<a href="" class="btn_info">신청방법 안내</a>
-							</div>
-						</div>
+					
+					<div style = "width : 75%; margin: auto; padding-top : 40px;">
+						<h3><b>시설 정보</b></h3>
+					</div>
+					
+					<div style = "width : 75%; margin: auto; padding-top : 40px;">
+						<h3><b>이용 시간</b></h3>
+						<table class="table" style = 'text-align : center; margin : 20px;'>
+							<thead>
+								<tr class = 'bg-light'>
+									<th style = "width:20%;"></th>
+									<th style = "width:40%;"><b>평일</b></th>
+									<th style = "width:40%;"><b>주말/공휴일</b></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th class = 'bg-light'><b>주간</b></th>
+									<td><b>09:00 - 18:00</b></td>
+									<td><b>19:00 - 22:00</b></td>
+								</tr>
+								<tr>
+									<th class = 'bg-light'><b>야간</b></th>
+									<td><b>09:00 - 18:00</b></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
+
 
 			<div id="footer">
 				<div class="footer_top">
@@ -152,7 +179,12 @@
 				</div>
 			</div>
 		</div>
-
+		
+		<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+		
 		<script>
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'

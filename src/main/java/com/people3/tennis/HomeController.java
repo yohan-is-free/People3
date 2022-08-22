@@ -41,4 +41,9 @@ public class HomeController {
 	public String boardlistForm() {
 		return "boardlist";
 	}
+	
+	@RequestMapping(value = "/resrv.do")
+	public String resrvForm() {
+		return "resrv";
+	}
 }
