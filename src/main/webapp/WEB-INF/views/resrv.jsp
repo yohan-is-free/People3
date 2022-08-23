@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = 'c' uri = "http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -7,6 +8,12 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+		<style>
+			.tennis_area.active {
+				background-color : #226331;
+				color : #cce1ff;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="skipNavi">
@@ -83,47 +90,60 @@
 				<div id="content">
 					<div style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h2><b>테니스장 예약</b></h2>
-						<table class = "table table-borderless" style = 'text-align : center; margin : 20px;'>
-						  <tbody>
-						    <tr>
-						      <td class = 'tennis_area active'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>						      
-						    </tr>
-						    <tr>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>						      
-						    </tr>
-						    <tr>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>						      
-						    </tr>
-						    <tr>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>
-						      <td class = 'tennis_area'><b>테니스장</b></td>						      
-						    </tr>
-						  </tbody>
-						</table>
+						<div class="container" style = 'text-align : center; margin : 20px;'>
+							<div class="row">
+								<c:forEach  var="GJT" items="${GJTennisInfo}">
+									<div class="col-3 tennis_area" >
+						    			<p style = "padding : 7px; font-size : 15px; data-no = ${GJT.courtNo}">${GJT.courtName}</p>
+						    		</div>	
+								</c:forEach>
+							</div>
+						</div>
 					</div>
 					
 					<div style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h3><b>시설 정보</b></h3>
+						<div class = 'd-flex' style = "margin : 20px;">
+							<!-- 이미지 자리 -->
+							<div style = 'width : 50%;'>
+								
+							</div>
+							<!-- 정보 -->
+							<div style = 'width : 50%;'>
+								<table class = 'table table-striped' style = 'width : 100%;'>
+									<tbody>
+										<tr>
+											<th colspan = '2';>전천후테니스장</th>
+										</tr>
+										<tr>
+											<th>위치</th>
+											<td>광주광역시 서구 풍암동 423-2</td>
+										</tr>
+										<tr>
+											<th>연락처</th>
+											<td>062-604-8415</td>
+										</tr>
+										<tr>
+											<th>코트</th>
+											<td>16</td>
+										</tr>
+										<tr>
+											<th>레슨 신청</th>
+											<td>가능</td>
+										</tr>
+									</tbody>
+								</table>
+								<div style = 'text-align : right;'>
+									<button class = 'btn btn-primary'>예약하기</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					
 					<div style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h3><b>이용 시간</b></h3>
-						<table class="table" style = 'text-align : center; margin : 20px;'>
+						<div style = 'margin : 20px;'>
+							<table class="table" style = 'text-align : center;'>
 							<thead>
 								<tr class = 'bg-light'>
 									<th style = "width:20%;"></th>
@@ -135,15 +155,16 @@
 								<tr>
 									<th class = 'bg-light'><b>주간</b></th>
 									<td><b>09:00 - 18:00</b></td>
-									<td><b>19:00 - 22:00</b></td>
+									<td><b>09:00 - 18:00</b></td>
 								</tr>
 								<tr>
 									<th class = 'bg-light'><b>야간</b></th>
-									<td><b>09:00 - 18:00</b></td>
+									<td><b>19:00 - 22:00</b></td>
 									<td></td>
 								</tr>
 							</tbody>
 						</table>
+						</div>
 					</div>
 				</div>
 			</div>
