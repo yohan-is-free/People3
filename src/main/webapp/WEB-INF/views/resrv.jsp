@@ -191,8 +191,6 @@
 									<li><a href="">서울올림픽기념관</a></li>
 									<li><a href="">소마미술관</a></li>
 									<li><a href="">올림픽공원</a></li>
-									<li><a href="">국민체력센터</a></li>
-									<li><a href="">국민권익위원회</a></li>
 								</ul>
 							</div>
 						</div>
