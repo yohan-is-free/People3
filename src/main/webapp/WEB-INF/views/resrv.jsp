@@ -7,13 +7,14 @@
 		<title>Tennis_Reservation</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
-		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 		<style>
 			.tennis_area.active {
 				background-color : #226331;
 				color : #cce1ff;
 			}
 		</style>
+		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
 	<body>
 		<div id="skipNavi">
@@ -208,11 +209,11 @@
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'
 			})
-
+	
 			$('.allmenu_area > .btn_close').on('click',() => {
 				$('.allmenu_area')[0].style.display = 'none'
 			})
-
+	
 			$('.tit_site').on('click',(e) => {
 				e.preventDefault();
 				if ($('.list_site')[0].style.display === 'none') {
@@ -222,5 +223,6 @@
 				}
 			})
 		</script>
+		<script type = "text/javascript" src = "resources/js/resrv.js"></script>
 	</body>
 </html>

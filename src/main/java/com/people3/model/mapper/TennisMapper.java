@@ -11,5 +11,11 @@ import com.people3.model.vo.GJTennis;
 public interface TennisMapper {
 
 	List<GJTennis> selectTA();
+
+	GJTennis selectInfo(int courtNo);
+
+	int courtCnt(int courtNo);
+
+	int isPossibleLesson(int courtNo);
 	
 }

@@ -58,7 +58,7 @@ public class HomeController {
 	public String resrvForm(Model model) {
 		List<GJTennis> list = tmapper.selectTA();
 		// 확인
-		list.stream().forEach(tennis -> log.error("테니스장 정보 : {}",tennis));
+		// list.stream().forEach(tennis -> log.info("테니스장 정보 : {}",tennis));
 		model.addAttribute("GJTennisInfo",list);
 		return "resrv";
 	}

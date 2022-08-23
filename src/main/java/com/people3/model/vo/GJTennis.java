@@ -10,5 +10,9 @@ public class GJTennis {
 	private String courtName;
 	private String courtTel;
 	private String courtAddr;
+	// 장내 코트수 
+	private int courtCnt;
+	// 레슨 가능 여부
+	private boolean isLesson;
 	
 }
