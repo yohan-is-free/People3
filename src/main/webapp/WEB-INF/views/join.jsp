@@ -88,23 +88,23 @@
 							<div class="join_box">
 								<p class="join_form">
 									<span class="label">아이디</span>
-									<input type="text" id="user_id" name="user_id" class="c_input" title="아이디 입력" placeholder="아이디">
+									<input type="text" id="id" name="id" class="c_input" title="아이디 입력" placeholder="아이디">
 								</p>
 								<p class="join_form">
 									<span class="label">비밀번호</span>
-									<input type="password" id="user_pwd" name="user_pwd" class="c_input" title="비밀번호 입력" placeholder="비밀번호">
+									<input type="password" id="password" name="password" class="c_input" title="비밀번호 입력" placeholder="비밀번호">
 								</p>
 								<p class="join_form">
 									<span class="label">비밀번호 확인</span>
-									<input type="password" id="user_pwd" name="user_pwd_2" class="c_input" title="비밀번호 입력" placeholder="비밀번호 확인">
+									<input type="password" id="password2" name="password2" class="c_input" title="비밀번호 입력" placeholder="비밀번호 확인">
 								</p>
 								<p class="join_form">
 									<span class="label">닉네임</span>
-									<input type="text" id="user_nick" name="user_nick" class="c_input" title="닉네임 입력" placeholder="닉네임">
+									<input type="text" id="nick" name="nick" class="c_input" title="닉네임 입력" placeholder="닉네임">
 								</p>
 								<p class="join_form">
 									<span class="label">전화번호</span>
-									<input type="text" id="user_tel" name="user_pwd_2" class="c_input" title="전화번호 입력" placeholder="전화번호">
+									<input type="text" id="tel" name="tel" class="c_input" title="전화번호 입력" placeholder="전화번호">
 								</p>
 								<div class="join_form" style = "text-align:center;">
 									<button href="#none" class="btn_base on">회원 가입</button>

@@ -8,18 +8,15 @@
 	
 	<!-- 히카리 CP 빈 등록 -->
  	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver">
-		</property>
-		<property name="jdbcUrl"
-			value="jdbc:mysql://project-db-stu.ddns.net:3307/gjai_4_6_0822"></property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://project-db-stu.ddns.net:3307/gjai_4_6_0822"></property>
 		<property name="username" value="three"></property>
 		<property name="password" value="smhrd6"></property>
 	</bean> 
 
 	<!-- 히카리 CP 설정 -->
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" 
+	                                                      destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 	

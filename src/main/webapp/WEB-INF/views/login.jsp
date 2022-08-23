@@ -87,11 +87,11 @@
 							<div class="login_box">
 								<p class="login_form">
 									<span class="label">아이디</span>
-									<input type="text" id="user_id" name="user_id" class="c_input" title="아이디 입력" placeholder="아이디">
+									<input type="text" id="id" name="id" class="c_input" title="아이디 입력" placeholder="아이디">
 								</p>
 								<p class="login_form">
 									<span class="label">비밀번호</span>
-									<input type="password" id="user_pwd" name="user_pwd" class="c_input" title="비밀번호 입력" placeholder="비밀번호">
+									<input type="password" id="password" name="password" class="c_input" title="비밀번호 입력" placeholder="비밀번호">
 								</p>
 								<p class="login_ect">
 									<a href="./join.do" class="btn_txt">회원가입</a>
