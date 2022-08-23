@@ -12,6 +12,11 @@
 				background-color : #226331;
 				color : #cce1ff;
 			}
+			
+			.tennis_area.m_over {
+				background-color : #226331;
+				color : #cce1ff;
+			}
 		</style>
 		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
 		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -106,7 +111,7 @@
 						<h3><b>시설 정보</b></h3>
 						<div class = 'd-flex' style = "margin : 20px;">
 							<!-- 이미지 자리 -->
-							<div style = 'width : 50%;'>
+							<div class = 'GJT_img' style = 'width : 50%;'>
 								
 							</div>
 							<!-- 정보 -->
@@ -114,35 +119,35 @@
 								<table class = 'table table-striped' style = 'width : 100%;'>
 									<tbody>
 										<tr>
-											<th colspan = '2';>전천후테니스장</th>
+											<th class = 'GJT_name' colspan = '2'; style = 'text-align : center'>name</th>
 										</tr>
 										<tr>
 											<th>위치</th>
-											<td>광주광역시 서구 풍암동 423-2</td>
+											<td class = 'GJT_addr' >addr</td>
 										</tr>
 										<tr>
 											<th>연락처</th>
-											<td>062-604-8415</td>
+											<td class = 'GJT_tel' >tel</td>
 										</tr>
 										<tr>
 											<th>코트</th>
-											<td>16</td>
+											<td class = 'GJT_court_cnt' >cnt</td>
 										</tr>
 										<tr>
 											<th>레슨 신청</th>
-											<td>가능</td>
+											<td class = 'GJT_lsn_psbl' >lesson</td>
 										</tr>
 									</tbody>
 								</table>
 								<div style = 'text-align : right;'>
-									<button class = 'btn btn-primary'>예약하기</button>
+									<button class = 'btn btn-resrv btn-primary'>예약하기</button>
 								</div>
 							</div>
 						</div>
 					</div>
 					
 					<div style = "width : 75%; margin: auto; padding-top : 40px;">
-						<h3><b>이용 시간</b></h3>
+						<h3><b>이용 시간/요금</b></h3>
 						<div style = 'margin : 20px;'>
 							<table class="table" style = 'text-align : center;'>
 							<thead>
@@ -154,14 +159,14 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th class = 'bg-light'><b>주간</b></th>
-									<td><b>09:00 - 18:00</b></td>
-									<td><b>09:00 - 18:00</b></td>
+									<th class = 'bg-light'><b></b>주간<br/>09:00 - 18:00</th>
+									<td><b></b></td>
+									<td><b></b></td>
 								</tr>
 								<tr>
-									<th class = 'bg-light'><b>야간</b></th>
-									<td><b>19:00 - 22:00</b></td>
-									<td></td>
+									<th class = 'bg-light'><b>야간</b><br/>19:00 - 22:00</th>
+									<td><b></b></td>
+									<td><b></b></td>
 								</tr>
 							</tbody>
 						</table>
@@ -206,6 +211,38 @@
 		crossorigin="anonymous"></script>
 		
 		<script>
+			$('.tennis_area').on('mouseover',(e) => {
+				$(e.currentTarget).addClass('m_over');
+			})
+			
+			$('.tennis_area').on('mouseout',(e) => {
+				$(e.currentTarget).removeClass('m_over');
+			})
+			
+			$('.tennis_area').on('click',(e) => {
+				if (!$(e.currentTarget).hasClass('active')){
+					$('.tennis_area').each((idx,obj) => {
+						if ($(obj).hasClass('active')) {
+							$(obj).removeClass('active')
+						}
+					});
+					$(e.currentTarget).addClass('active');
+					console.log($(e.currentTarget).child().data('no'));
+					$.ajax({
+						url : "./tennissearch.do",
+						type : "post",
+						data : {"courtNo":$(e.currentTarget).data('no')},
+						dataType : 'text',
+						success : function(result) {
+							Swal.fire("성공");
+						},
+						error : function(e) {
+							console.log(e);
+						}
+					});
+				}
+			})
+			
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'
 			})
@@ -222,7 +259,11 @@
 					$('.list_site')[0].style.display = 'none'
 				}
 			})
+			
+			$('.btn-resrv').on('click',() => {
+				Swal.fire("로그인 후에 이용가능합니다.").then(() => {location.href="./login.do"});
+			})
+			
 		</script>
-		<script type = "text/javascript" src = "resources/js/resrv.js"></script>
 	</body>
 </html>

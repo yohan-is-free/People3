@@ -3,7 +3,7 @@ package com.people3.tennis;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.people3.model.mapper.TennisMapper;
@@ -22,12 +22,10 @@ public class ResrvRestController {
 	
 	@SneakyThrows
 	@PostMapping("/tennissearch.do")
-	public GJTennis search(@RequestParam Map<String, Object> reqParam) {
+	public GJTennis search(String courtNo) {
 		
 		log.error("진입 성공!!");
 		GJTennis info = null;
-		
-		int courtNo = (int) reqParam.get("courtNo");
 		
 		info = tmapper.selectInfo(courtNo);
 		info.setCourtCnt(tmapper.courtCnt(courtNo));
