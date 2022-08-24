@@ -8,15 +8,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 		<style>
-			.tennis_area.active {
-				background-color : #226331;
-				color : #cce1ff;
-			}
 			
-			.tennis_area.m_over {
-				background-color : #226331;
-				color : #cce1ff;
-			}
 		</style>
 		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
 		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -45,10 +37,10 @@
 						</ul>
 					</nav>
 					<a class="pc_allmenu"><span>전체메뉴</span></a>
-					<div class="allmenu_area" style = 'display:none;'>
+					<div class="allmenu_area" style="display: none;">
 						<h2 class="tit_type02">메뉴바로가기</h2>
 						<ul class="all_menu">
-							<li><a>예약신청</a></li>
+							<li><a href="./resrv.do">예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
 							<li><a href="">신청방법안내</a></li>
 							<li><a href="">시설이용안내</a></li>
@@ -84,7 +76,7 @@
 				<div class="section sticky_area">
 					<div class="inner">
 						<ul class="sticky_menu">
-							<li><a>예약신청</a></li>
+							<li><a href="./resrv.do">예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
 							<li><a href="">신청방법안내</a></li>
 							<li><a href="">시설이용안내</a></li>
@@ -92,89 +84,10 @@
 					</div>
 				</div>
 				
-
 				<div id="content">
-					<div style = "width : 75%; margin: auto; padding-top : 40px;">
-						<h2><b>테니스장 예약</b></h2>
-						<div class="container" style = 'text-align : center; margin : 20px;'>
-							<div class="row">
-								<c:forEach  var="GJT" items="${GJTennisInfo}">
-									<div class="col-3 tennis_area" >
-						    			<p style = "padding : 7px; font-size : 15px;" data-no = ${GJT.courtNo}>${GJT.courtName}</p>
-						    		</div>	
-								</c:forEach>
-							</div>
-						</div>
-					</div>
-					
-					<div class = "tennis_info hidden" style = "width : 75%; margin: auto; padding-top : 40px;">
-						<h3><b>시설 정보</b></h3>
-						<div class = 'd-flex' style = "margin : 20px;">
-							<!-- 이미지 자리 -->
-							<div class = 'GJT_img' style = 'width : 50%;'>
-								
-							</div>
-							<!-- 정보 -->
-							<div style = 'width : 50%;'>
-								<table class = 'table table-striped' style = 'width : 100%;'>
-									<tbody>
-										<tr>
-											<th class = 'GJT_name' colspan = '2'; style = 'text-align : center'>name</th>
-										</tr>
-										<tr>
-											<th style = "width : 20%;">위치</th>
-											<td class = 'GJT_addr' style = "width : 80%;">addr</td>
-										</tr>
-										<tr>
-											<th>연락처</th>
-											<td class = 'GJT_tel' >tel</td>
-										</tr>
-										<tr>
-											<th>코트 수</th>
-											<td class = 'GJT_court_cnt' >cnt</td>
-										</tr>
-										<tr>
-											<th>레슨 신청</th>
-											<td class = 'GJT_lsn_psbl' >lesson</td>
-										</tr>
-									</tbody>
-								</table>
-								<div style = 'text-align : right;'>
-									<button class = 'btn btn-resrv btn-primary'>예약하기</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class = "tennis_info hidden" style = "width : 75%; margin: auto; padding-top : 40px;">
-						<h3><b>이용 시간/요금</b></h3>
-						<div style = 'margin : 20px;'>
-							<table class="table" style = 'text-align : center; vertical-align: middle;'>
-							<thead>
-								<tr class = 'bg-light'>
-									<th style = "width:20%;"></th>
-									<th style = "width:40%;"><b>평일</b></th>
-									<th style = "width:40%;"><b>주말/공휴일</b></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th class = 'bg-light'><b></b>주간<br/>06:00 - 18:00</th>
-									<td><b>20,000원</b></td>
-									<td><b>30,000원</b></td>
-								</tr>
-								<tr>
-									<th class = 'bg-light'><b>야간</b><br/>18:00 - 22:00</th>
-									<td><b>30,000원</b></td>
-									<td><b>45,000원</b></td>
-								</tr>
-							</tbody>
-						</table>
-						</div>
-					</div>
 				</div>
+					
 			</div>
-
 
 			<div id="footer">
 				<div class="footer_top">
@@ -211,49 +124,6 @@
 		crossorigin="anonymous"></script>
 		
 		<script>
-		
-			let idx = -1;
-			
-			$('.tennis_area').on('mouseover',(e) => {
-				$(e.currentTarget).addClass('m_over');
-			})
-			
-			$('.tennis_area').on('mouseout',(e) => {
-				$(e.currentTarget).removeClass('m_over');
-			})
-			
-			$('.tennis_area').on('click',(e) => {
-				if (!$(e.currentTarget).hasClass('active')){
-					$('.tennis_area').each((idx,obj) => {
-						if ($(obj).hasClass('active')) {
-							$(obj).removeClass('active')
-						}
-					});
-					$(e.currentTarget).addClass('active');
-					idx = $(e.currentTarget).children('p').data('no');
-					$.ajax({
-						url : "./tennissearch.do",
-						type : "post",
-						data : {"courtNo": idx},
-						dataType : 'json',
-						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-						success : function(result) {
-							<!-- console.log(result); -->
-							$('.GJT_name').text(result.courtName);
-							$('.GJT_addr').text(result.courtAddr);
-							$('.GJT_tel').text(result.courtTel);
-							$('.GJT_court_cnt').text(result.courtCnt);
-							$('.GJT_lsn_psbl').text(result.lesson);
-							if ($('.tennis_info').hasClass('hidden')) {
-								$('.tennis_info').removeClass('hidden')
-							}
-						},
-						error : function(e) {
-							console.log(e);
-						}
-					});
-				}
-			})
 			
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'
@@ -269,16 +139,6 @@
 					$('.list_site')[0].style.display = 'block'
 				} else {
 					$('.list_site')[0].style.display = 'none'
-				}
-			})
-			
-			$('.btn-resrv').on('click',() => {
-				if(true) {
-					
-					
-					location.href="./resrvDetail.do?courtNo="+idx
-				} else {
-					Swal.fire("로그인 후에 이용가능합니다.").then(() => {location.href="./login.do"});
 				}
 			})
 			
