@@ -3,10 +3,16 @@
 <mapper namespace="com.people3.model.mapper.TestMapper">
     
     <select id="getLists" resultType="com.people3.model.vo.Board">
-		select * from board order by boardNo
+		select * from board order by boardNo desc
 	</select>
+    
     
     <select id = "testDB" resultType = "java.lang.String">
     	select now() from dual;
     </select>
+    
+    <insert id="boardInsert" parameterType="com.people3.model.vo.Board">
+	INSERT INTO board(id,title,content,date)
+	VALUES(#{id}, #{title}, #{content}, now())
+    </insert>
 </mapper>

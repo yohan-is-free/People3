@@ -100,33 +100,32 @@
 					<!--<h2>MVC02</h2>  -->
 					<div class="panel panel-default">
 						<div class="panel-heading">BOARD</div>
-						<table class="table table-dordered">
-							<tr>
-								<td>번호</td>
-								<td>작성자</td>
-								<td>제목</td>
-								<td>내용</td>
-								<td>작성일</td>
-							</tr>
-							 <c:forEach var="vo" items="${list}">
-							       <tr>
-							       <td>${vo.boardNo}</td>
-							       <td>${vo.id}</td>
-							       <td>${vo.title}</td>
-							       <td>${vo.content}</td>
-							       <td>${vo.date}</td>
-							       </tr>
-							 </c:forEach>
-							
 
-							<tr>
-								<td colspan="5">
-									<a href="boardForm.do" class="btn btn-primary btn-xs">글쓰기</a>
-								</td>
-							</tr>
-						</table>
-						<!-- <div class="panel-footer">Spring특화과정A_황혜윤</div>
-  </div> -->
+						<form action="boardInsert.do" method="post">
+							<table class="table">
+								<tr>
+									<td>제목</td>
+									<td><input type="text" name="title" class="form-control" /></td>
+								</tr>
+								
+								<tr>
+									<td>내용</td>
+									<td> <textarea rows="7" class="form-control" name="content"></textarea></td>
+								</tr>
+								
+								<tr>
+									<td>작성자</td>
+									<td><input type="text" name="id" class="form-control" /></td>
+								</tr>
+
+								<tr>
+									<td colspan="2" align="center">
+										<button type="submit" class="btn btn-success btn-xs">등록</button>
+										<button type="reset" class="btn btn-success btn-xs">취소</button>
+									</td>
+								</tr>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
