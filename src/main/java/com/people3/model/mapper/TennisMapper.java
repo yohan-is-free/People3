@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.people3.model.vo.Cnt;
 import com.people3.model.vo.GJTennis;
 
 
@@ -14,8 +15,8 @@ public interface TennisMapper {
 
 	GJTennis selectInfo(int courtNo);
 
-	int courtCnt(int courtNo);
+	Cnt courtCnt(int courtNo);
 
-	int isPossibleLesson(int courtNo);
+	Cnt isPossibleLesson(int courtNo);
 	
 }

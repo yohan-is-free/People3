@@ -9,11 +9,11 @@
     	select * from gj_tennis where courtno = #{courtNo};
     </select>
     
-    <select id = "courtCnt">
-    	select count(courtcode) from tennis_court where courtno = #{courtNo};
+    <select id = "courtCnt" resultType = "com.people3.model.vo.Cnt">
+    	select count(courtcode) as cnt from tennis_court where courtno = #{courtNo};
     </select>
     
-    <select id = "isPossibleLesson">
-    	select count(coachno) from coach where courtno = #{courtNo};
+    <select id = "isPossibleLesson" resultType = "com.people3.model.vo.Cnt">
+    	select count(coachno) as cnt from coach where courtno = #{courtNo};
     </select>
 </mapper>

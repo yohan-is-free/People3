@@ -100,14 +100,14 @@
 							<div class="row">
 								<c:forEach  var="GJT" items="${GJTennisInfo}">
 									<div class="col-3 tennis_area" >
-						    			<p style = "padding : 7px; font-size : 15px; data-no = ${GJT.courtNo}">${GJT.courtName}</p>
+						    			<p style = "padding : 7px; font-size : 15px;" data-no = ${GJT.courtNo}>${GJT.courtName}</p>
 						    		</div>	
 								</c:forEach>
 							</div>
 						</div>
 					</div>
 					
-					<div style = "width : 75%; margin: auto; padding-top : 40px;">
+					<div class = "tennis_info hidden" style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h3><b>시설 정보</b></h3>
 						<div class = 'd-flex' style = "margin : 20px;">
 							<!-- 이미지 자리 -->
@@ -122,15 +122,15 @@
 											<th class = 'GJT_name' colspan = '2'; style = 'text-align : center'>name</th>
 										</tr>
 										<tr>
-											<th>위치</th>
-											<td class = 'GJT_addr' >addr</td>
+											<th style = "width : 20%;">위치</th>
+											<td class = 'GJT_addr' style = "width : 80%;">addr</td>
 										</tr>
 										<tr>
 											<th>연락처</th>
 											<td class = 'GJT_tel' >tel</td>
 										</tr>
 										<tr>
-											<th>코트</th>
+											<th>코트 수</th>
 											<td class = 'GJT_court_cnt' >cnt</td>
 										</tr>
 										<tr>
@@ -146,10 +146,10 @@
 						</div>
 					</div>
 					
-					<div style = "width : 75%; margin: auto; padding-top : 40px;">
+					<div class = "tennis_info hidden" style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h3><b>이용 시간/요금</b></h3>
 						<div style = 'margin : 20px;'>
-							<table class="table" style = 'text-align : center;'>
+							<table class="table" style = 'text-align : center; vertical-align: middle;'>
 							<thead>
 								<tr class = 'bg-light'>
 									<th style = "width:20%;"></th>
@@ -159,14 +159,14 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th class = 'bg-light'><b></b>주간<br/>09:00 - 18:00</th>
-									<td><b></b></td>
-									<td><b></b></td>
+									<th class = 'bg-light'><b></b>주간<br/>06:00 - 18:00</th>
+									<td><b>20,000원</b></td>
+									<td><b>30,000원</b></td>
 								</tr>
 								<tr>
-									<th class = 'bg-light'><b>야간</b><br/>19:00 - 22:00</th>
-									<td><b></b></td>
-									<td><b></b></td>
+									<th class = 'bg-light'><b>야간</b><br/>18:00 - 22:00</th>
+									<td><b>30,000원</b></td>
+									<td><b>45,000원</b></td>
 								</tr>
 							</tbody>
 						</table>
@@ -227,14 +227,22 @@
 						}
 					});
 					$(e.currentTarget).addClass('active');
-					console.log($(e.currentTarget).child().data('no'));
 					$.ajax({
 						url : "./tennissearch.do",
 						type : "post",
-						data : {"courtNo":$(e.currentTarget).data('no')},
-						dataType : 'text',
+						data : {"courtNo":$(e.currentTarget).children('p').data('no')},
+						dataType : 'json',
+						contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 						success : function(result) {
-							Swal.fire("성공");
+							<!-- console.log(result); -->
+							$('.GJT_name').text(result.courtName);
+							$('.GJT_addr').text(result.courtAddr);
+							$('.GJT_tel').text(result.courtTel);
+							$('.GJT_court_cnt').text(result.courtCnt);
+							$('.GJT_lsn_psbl').text(result.lesson);
+							if ($('.tennis_info').hasClass('hidden')) {
+								$('.tennis_info').removeClass('hidden')
+							}
 						},
 						error : function(e) {
 							console.log(e);
