@@ -20,6 +20,13 @@
 				padding : 20px 0;
 			}
 			
+			form > div {
+				padding : 5px 0;
+			}
+			
+			form > .btn_resrv_area {
+				text-align : right;
+			}
 		</style>
 	    <script src='resources/fullcalendar/lib/main.js'></script>
 	    <script>
@@ -35,11 +42,12 @@
 		        	if (currDate <= date.dateStr) {
 		        		calendar.removeAllEvents();
 		        		calendar.addEvent({title:"Selected", start:date.dateStr});
+		        		$('form').removeClass('hidden');
 		        	} else {
 		        		Swal.fire({
 		        			text : "오늘 날짜 이전일에 대해서는 예약이 불가능합니다.",
 		        			icon : "warning"
-		        		})
+		        		}).then();
 		        	}
 		        }
 	        });
@@ -144,42 +152,60 @@
 					<div class="tab-content" id="myTabContent">
 						<!-- 테니스 코트 예약 -->
 						<div class="tab-pane fade show active" id="userinfo" role="tabpanel" aria-labelledby="userinfo-tab">
-							<form action = "./courtResrv.do" method = 'post'>
+							<form class = 'hidden' action = "./courtResrv.do" method = 'post'>
 								<input class = 'hidden' type = 'text' name = 'revDate'/>
+								
 								<div class="input-group flex-nowrap">
-									<span class="input-group-text" id="addon-wrapping">@</span>
-									<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+									<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
+									<select class = "form-control form-select">
+										<option>코트 1</option>
+									</select>
 								</div>
-								코트 선텍
-								<select class = "form-control form-select">
-									<option>코트 1</option>
-								</select>
-								시간 선택
-								<select class = "form-control form-select">
-									<option>시간 1</option>
-								</select>
-								<button class = 'btn btn-primary' type = 'submit'>예약</button>
+								<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">시간 선택</span>
+									<select class = "form-control form-select">
+										<option>시간 1</option>
+									</select>
+								</div>
+								
+								<div class = "btn_resrv_area">
+									<button class = 'btn btn-primary' type = 'submit'>예약 신청</button>
+								</div>
 							</form>
 						</div>
 				
 						<!-- 레슨 예약 -->
 						<div class="tab-pane fade" id="myreview" role="tabpanel" aria-labelledby="myreview-tab">
-							<p>죄송합니다.<br/>본 테니스장은 레슨 서비스를 지원하지 않습니다.</p>
-							<form action = "./lessonResrv.do" method = 'post'>
+							
+							<form class = 'hidden' action = "./courtResrv.do" method = 'post'>
 								<input class = 'hidden' type = 'text' name = 'revDate'/>
-								코치 선택
-								<select class = "form-control form-select">
-									<option>코치 1</option>
-								</select>
-								코트 선텍
-								<select class = "form-control form-select">
-									<option>코트 1</option>
-								</select>
-								시간 선택
-								<select class = "form-control form-select">
-									<option>시간 1</option>
-								</select>
-								<button class = 'btn btn-primary' type = 'submit'>예약</button>
+								
+								<p>죄송합니다.<br/>본 테니스장은 레슨 서비스를 지원하지 않습니다.</p>
+								
+								<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">코치 선텍</span>
+									<select class = "form-control form-select">
+										<option>코치 1</option>
+									</select>
+								</div>
+								
+								<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
+									<select class = "form-control form-select">
+										<option>코트 1</option>
+									</select>
+								</div>
+								
+								<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">시간 선택</span>
+									<select class = "form-control form-select">
+										<option>시간 1</option>
+									</select>
+								</div>
+								
+								<div class = "btn_resrv_area">
+									<button class = 'btn btn-primary' type = 'submit'>예약 신청</button>
+								</div>
 							</form>
 						</div>
 					</div>
