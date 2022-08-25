@@ -7,11 +7,46 @@
 		<title>Tennis_Reservation</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src = "resources/js/moment.js"></script>
+		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<link href='resources/fullcalendar/lib/main.css' rel='stylesheet' />
 		<style>
+			#calendar {
+				padding-top :20px;
+			}
+			
+			#calendar+div {
+				padding : 20px 0;
+			}
 			
 		</style>
-		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
-		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	    <script src='resources/fullcalendar/lib/main.js'></script>
+	    <script>
+	
+	      document.addEventListener('DOMContentLoaded', function() {
+	        var calendarEl = document.getElementById('calendar');
+	        var calendar = new FullCalendar.Calendar(calendarEl, {
+		        height: '700px',
+		        expandRows: true,
+		        initialView: 'dayGridMonth',
+		        dateClick: (date) => {
+		        	let currDate = moment().format('YYYY-MM-DD');
+		        	if (currDate <= date.dateStr) {
+		        		calendar.removeAllEvents();
+		        		calendar.addEvent({title:"Selected", start:date.dateStr});
+		        	} else {
+		        		Swal.fire({
+		        			text : "오늘 날짜 이전일에 대해서는 예약이 불가능합니다.",
+		        			icon : "warning"
+		        		})
+		        	}
+		        }
+	        });
+	        calendar.render();
+	      });
+	
+	    </script>
 	</head>
 	<body>
 		<div id="skipNavi">
@@ -62,31 +97,93 @@
 			</div>
 
 			
-			<div id="container" class="tennis_main">
-				<div class="section visual_area">
-					<div class="inner">
-						<p class="txt">
-							<br><br><br><br><br><br>
-							셋이 왔어요
-							<strong class="stress">L<img src ="resources/images/common/tennisball.png">VE</strong>
-						</p>
-					</div>
+		<div id="container" class="tennis_main">
+			<div class="section visual_area">
+				<div class="inner">
+					<p class="txt">
+						<br><br><br><br><br><br>
+						셋이 왔어요
+						<strong class="stress">L<img src ="resources/images/common/tennisball.png">VE</strong>
+					</p>
 				</div>
+			</div>
 				
-				<div class="section sticky_area">
-					<div class="inner">
-						<ul class="sticky_menu">
-							<li><a href="./resrv.do">예약신청</a></li>
-							<li><a href="./boardlist.do">게시판</a></li>
-							<li><a href="">신청방법안내</a></li>
-							<li><a href="">시설이용안내</a></li>
+			<div class="section sticky_area">
+				<div class="inner">
+					<ul class="sticky_menu">
+						<li><a href="./resrv.do">예약신청</a></li>
+						<li><a href="./boardlist.do">게시판</a></li>
+						<li><a href="">신청방법안내</a></li>
+						<li><a href="">시설이용안내</a></li>
+					</ul>
+				</div>
+			</div>
+				
+			<div id="content">
+				<div style = "width : 75%; margin: auto; padding-top : 40px; padding-bottom : 40px;">
+					<div class="tab">
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link a active w-100 btn" href="#userinfo"
+									id="userinfo-tab" data-bs-toggle="tab" type="button" role="tab"
+									aria-controls="userinfo" aria-selected="true">테니스 코트 예약</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link a w-100 btn" id="myreview-tab"
+									data-bs-toggle="tab" data-bs-target="#myreview" type="button"
+									role="tab" aria-controls="myreview" aria-selected="false">레슨 예약</button>
+							</li>
 						</ul>
 					</div>
-				</div>
-				
-				<div id="content">
-				</div>
 					
+					<div id = 'calendar'>
+					</div>
+					
+					
+					<!-- 탭 -->
+					<div class="tab-content" id="myTabContent">
+						<!-- 테니스 코트 예약 -->
+						<div class="tab-pane fade show active" id="userinfo" role="tabpanel" aria-labelledby="userinfo-tab">
+							<form action = "./courtResrv.do" method = 'post'>
+								<input class = 'hidden' type = 'text' name = 'revDate'/>
+								<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">@</span>
+									<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+								</div>
+								코트 선텍
+								<select class = "form-control form-select">
+									<option>코트 1</option>
+								</select>
+								시간 선택
+								<select class = "form-control form-select">
+									<option>시간 1</option>
+								</select>
+								<button class = 'btn btn-primary' type = 'submit'>예약</button>
+							</form>
+						</div>
+				
+						<!-- 레슨 예약 -->
+						<div class="tab-pane fade" id="myreview" role="tabpanel" aria-labelledby="myreview-tab">
+							<p>죄송합니다.<br/>본 테니스장은 레슨 서비스를 지원하지 않습니다.</p>
+							<form action = "./lessonResrv.do" method = 'post'>
+								<input class = 'hidden' type = 'text' name = 'revDate'/>
+								코치 선택
+								<select class = "form-control form-select">
+									<option>코치 1</option>
+								</select>
+								코트 선텍
+								<select class = "form-control form-select">
+									<option>코트 1</option>
+								</select>
+								시간 선택
+								<select class = "form-control form-select">
+									<option>시간 1</option>
+								</select>
+								<button class = 'btn btn-primary' type = 'submit'>예약</button>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div id="footer">
