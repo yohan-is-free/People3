@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	<% pageContext.setAttribute("newLineChar", "\n");%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -100,31 +102,37 @@
 					<!--<h2>MVC02</h2>  -->
 					<div class="panel panel-default">
 						<div class="panel-heading">BOARD</div>
-						<table class="table table-dordered">
-							<tr>
-								<td>번호</td>
-								<td>제목</td>
-								<td>작성자</td>
-								<td>작성일</td>
-							</tr>
-							 <c:forEach var="vo" items="${list}">
-							       <tr>
-							       <td>${vo.boardNo}</td>
-							       <td><a href="boardContent.do?boardNo=${vo.boardNo}">${vo.title}</a></td>
-							       <td>${vo.id}</td>
-							       <td>${vo.date}</td>
-							       </tr>
-							 </c:forEach>
-							
 
-							<tr>
-								<td colspan="5">
-									<a href="boardForm.do" class="btn btn-primary btn-xs">글쓰기</a>
-								</td>
-							</tr>
-						</table>
-						<!-- <div class="panel-footer">Spring특화과정A_황혜윤</div>
-  </div> -->
+						<form action="boardInsert.do" method="post">
+							<table class="table">
+								<tr>
+									<td>제목</td>
+									<td>${vo.title}</td>
+								</tr>
+								
+								<tr>
+									<td>내용</td>
+									<td>${fn:replace(vo.content, newLineChar,"<br>")}</td>
+								</tr>
+								
+								<tr>
+									<td>작성자</td>
+									<td>${vo.id}</td>
+								</tr>
+								
+									<tr>
+									<td>작성일</td>
+									<td>${vo.date}</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<a href="boardUpdateForm.do/${vo.boardNo}" class="btn btn-primary btn-xs">수정화면</a>
+										<a href="boardDelete.do/${vo.boardNo}" class="btn btn-warning btn-xs">삭제</a>
+										<a href="board.do" class="btn btn-info btn-xs">목록</a>
+									</td>
+								</tr>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
