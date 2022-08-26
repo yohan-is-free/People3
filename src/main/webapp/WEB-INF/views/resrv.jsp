@@ -112,7 +112,7 @@
 						<div class = 'd-flex' style = "margin : 20px;">
 							<!-- 이미지 자리 -->
 							<div class = 'GJT_img' style = 'width : 50%;'>
-								
+								<img src = "resources/images/common/img_icon3.png">
 							</div>
 							<!-- 정보 -->
 							<div style = 'width : 50%;'>
