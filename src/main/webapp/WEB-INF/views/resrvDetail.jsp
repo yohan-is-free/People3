@@ -62,7 +62,7 @@
 	
 	    </script>
 	</head>
-	<body>
+	<body style = "min-width : 1200px;">
 		<div id="skipNavi">
 			<a href="#content">본문 바로가기</a>
 		</div>

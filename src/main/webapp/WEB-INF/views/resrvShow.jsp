@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body style = "min-width : 1200px;">
 		<div id="skipNavi">
 			<a href="#content">본문 바로가기</a>
 		</div>

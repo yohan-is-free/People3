@@ -21,7 +21,7 @@
 		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
 		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
-	<body>
+	<body style = "min-width : 1200px;">
 		<div id="skipNavi">
 			<a href="#content">본문 바로가기</a>
 		</div>
@@ -111,11 +111,11 @@
 						<h3><b>시설 정보</b></h3>
 						<div class = 'd-flex' style = "margin : 20px;">
 							<!-- 이미지 자리 -->
-							<div class = 'GJT_img' style = 'width : 50%;'>
-								<img src = "resources/images/common/img_icon3.png">
+							<div class = 'GJT_img' style = 'max-width :440px;'>
+								
 							</div>
 							<!-- 정보 -->
-							<div style = 'width : 50%;'>
+							<div style = 'width :100%;'>
 								<table class = 'table table-striped' style = 'width : 100%;'>
 									<tbody>
 										<tr>
@@ -245,6 +245,7 @@
 							$('.GJT_tel').text(result.courtTel);
 							$('.GJT_court_cnt').text(result.courtCnt);
 							$('.GJT_lsn_psbl').text(result.lesson);
+							$('.GJT_img').empty().append("<img style ='padding : 0 10px;' src = 'resources/images/content/"+result.imgPath+"'>")
 							if ($('.tennis_info').hasClass('hidden')) {
 								$('.tennis_info').removeClass('hidden')
 							}
