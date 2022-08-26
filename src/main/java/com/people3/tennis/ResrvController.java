@@ -7,10 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.people3.model.mapper.TennisMapper;
+import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.TennisCourt;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class ResrvController {
@@ -28,10 +32,25 @@ public class ResrvController {
 	
 	@RequestMapping(value = "/resrvDetail.do")
 	public String resrvDetailForm(Model model, int courtNo) {
+		
 		GJTennis info = null;
 		info = tmapper.selectInfo(courtNo);
-		info.setCourtCnt(tmapper.courtCnt(courtNo).getCnt());
-		info.setIsLesson(tmapper.isPossibleLesson(courtNo).getCnt() >= 1 ? "가능":"불가능");
+		List<TennisCourt> courts = tmapper.selectCourts(courtNo);
+		List<Coach> coachs = tmapper.selectCoachs(courtNo);
+		info.setCourtCnt(courts.size());
+		info.setIsLesson(coachs.size() >= 1 ? "가능":"불가능");
+		
+		model.addAttribute("GJTInfo",info);
+		model.addAttribute("courts",courts);
+		model.addAttribute("coachs",coachs);
+		
+		/*
+		 * log.info("GJTInfo ===> {}",info); for (TennisCourt court : courts) {
+		 * log.info("court ===> {}",court); }
+		 * 
+		 * for (Coach coach : coachs) { log.info("coach ===> {}",coach); }
+		 */
+		
 		return "resrvDetail";
 	}
 }

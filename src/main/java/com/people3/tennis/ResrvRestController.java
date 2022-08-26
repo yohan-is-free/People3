@@ -1,6 +1,7 @@
 package com.people3.tennis;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 import com.people3.model.mapper.TennisMapper;
+import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
 
 import lombok.RequiredArgsConstructor;
@@ -31,7 +33,8 @@ public class ResrvRestController {
 		
 		info = tmapper.selectInfo(courtNo);
 		info.setCourtCnt(tmapper.courtCnt(courtNo).getCnt());
-		info.setIsLesson(tmapper.isPossibleLesson(courtNo).getCnt() >= 1 ? "가능":"불가능");
+		List<Coach> coachs = tmapper.selectCoachs(courtNo);
+		info.setIsLesson(coachs.size() >= 1 ? "가능":"불가능");
 		
 //		log.info("GJTInfo ===> {}",info);
 		
@@ -41,7 +44,7 @@ public class ResrvRestController {
 		obj.addProperty("courtTel",info.getCourtTel());
 		obj.addProperty("courtCnt",info.getCourtCnt());
 		obj.addProperty("lesson",info.getIsLesson());		
-		obj.addProperty("imgPath",info.getImgPath());		
+		obj.addProperty("imgPath",info.getImgPath());
 		
 		return obj.toString();	
 	}

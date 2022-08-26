@@ -42,7 +42,6 @@
 		        	if (currDate <= date.dateStr) {
 		        		calendar.removeAllEvents();
 		        		calendar.addEvent({title:"Selected", start:date.dateStr});
-		        		$('form').removeClass('hidden');
 		        	} else {
 		        		Swal.fire({
 		        			text : "오늘 날짜 이전일에 대해서는 예약이 불가능합니다.",
@@ -131,12 +130,12 @@
 				<div style = "width : 75%; margin: auto; padding-top : 40px; padding-bottom : 40px;">
 					<div class="tab">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item" role="presentation">
+							<li class="nav-item nav-resrv-court" role="presentation">
 								<button class="nav-link a active w-100 btn" href="#userinfo"
 									id="userinfo-tab" data-bs-toggle="tab" type="button" role="tab"
 									aria-controls="userinfo" aria-selected="true">테니스 코트 예약</button>
 							</li>
-							<li class="nav-item" role="presentation">
+							<li class="nav-item nav-resrv-lesson" role="presentation">
 								<button class="nav-link a w-100 btn" id="myreview-tab"
 									data-bs-toggle="tab" data-bs-target="#myreview" type="button"
 									role="tab" aria-controls="myreview" aria-selected="false">레슨 예약</button>
@@ -152,19 +151,22 @@
 					<div class="tab-content" id="myTabContent">
 						<!-- 테니스 코트 예약 -->
 						<div class="tab-pane fade show active" id="userinfo" role="tabpanel" aria-labelledby="userinfo-tab">
-							<form class = 'hidden' action = "./courtResrv.do" method = 'post'>
+							<form action = "./courtResrv.do" method = 'post'>
 								<input class = 'hidden' type = 'text' name = 'revDate'/>
 								
 								<div class="input-group flex-nowrap">
 									<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
 									<select class = "form-control form-select">
-										<option>코트 1</option>
+										<option>코트</option>
+										<c:forEach var = 'court' items = "${courts}">
+											<option>${court.courtCode}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<div class="input-group flex-nowrap">
 									<span class="input-group-text" id="addon-wrapping">시간 선택</span>
 									<select class = "form-control form-select">
-										<option>시간 1</option>
+										<option>시간</option>
 									</select>
 								</div>
 								
@@ -177,35 +179,42 @@
 						<!-- 레슨 예약 -->
 						<div class="tab-pane fade" id="myreview" role="tabpanel" aria-labelledby="myreview-tab">
 							
-							<form class = 'hidden' action = "./courtResrv.do" method = 'post'>
+							<form action = "./courtResrv.do" method = 'post'>
 								<input class = 'hidden' type = 'text' name = 'revDate'/>
+								<c:choose>
+									<c:when test = '${GJTInfo.isLesson eq "가능"}'>
+										<div class="input-group flex-nowrap">
+											<span class="input-group-text" id="addon-wrapping">코치 선텍</span>
+											<select class = "form-control form-select">
+												<option value = 0>코치</option>
+												<c:forEach var = 'coach' items = '${coachs}'>
+													<option value = ${coach.coachNo}>${coach.coachName} (Tel. ${coach.coachTel})</option>
+												</c:forEach>
+											</select>
+										</div>
+										
+										<div class="input-group flex-nowrap">
+											<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
+											<select class = "form-control form-select">
+												<option>코트</option>
+											</select>
+										</div>
+										
+										<div class="input-group flex-nowrap">
+											<span class="input-group-text" id="addon-wrapping">시간 선택</span>
+											<select class = "form-control form-select">
+												<option>시간</option>
+											</select>
+										</div>
+										
+										<div class = "btn_resrv_area">
+											<button class = 'btn btn-primary' type = 'submit'>예약 신청</button>
+										</div>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>									
+								</c:choose>
 								
-								<p>죄송합니다.<br/>본 테니스장은 레슨 서비스를 지원하지 않습니다.</p>
-								
-								<div class="input-group flex-nowrap">
-									<span class="input-group-text" id="addon-wrapping">코치 선텍</span>
-									<select class = "form-control form-select">
-										<option>코치 1</option>
-									</select>
-								</div>
-								
-								<div class="input-group flex-nowrap">
-									<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
-									<select class = "form-control form-select">
-										<option>코트 1</option>
-									</select>
-								</div>
-								
-								<div class="input-group flex-nowrap">
-									<span class="input-group-text" id="addon-wrapping">시간 선택</span>
-									<select class = "form-control form-select">
-										<option>시간 1</option>
-									</select>
-								</div>
-								
-								<div class = "btn_resrv_area">
-									<button class = 'btn btn-primary' type = 'submit'>예약 신청</button>
-								</div>
 							</form>
 						</div>
 					</div>
@@ -266,5 +275,24 @@
 			})
 			
 		</script>
+		
+		<c:choose>
+			<c:when test = '${GJTInfo.isLesson eq "가능"}'>
+				<script></script>
+			</c:when>
+			<c:otherwise>
+				<script>
+					$('.nav-resrv-lesson').on('click',() => {
+						Swal.fire({
+		        			text : "본 테니스장은 레슨 서비스를 지원하지 않습니다.",
+		        			icon : "warning"
+		        		}).then(() => {
+		        			console.log('click');
+		        			$('.nav-resrv-court > button').trigger('click');
+		        		});
+					})
+				</script>
+			</c:otherwise>									
+		</c:choose>
 	</body>
 </html>

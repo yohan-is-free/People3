@@ -16,4 +16,13 @@
     <select id = "isPossibleLesson" resultType = "com.people3.model.vo.Cnt">
     	select count(coachno) as cnt from coach where courtno = #{courtNo};
     </select>
+    
+    <select id = "selectCourts" resultType = "com.people3.model.vo.TennisCourt">
+    	select * from tennis_court where courtno = #{courtNo};
+    </select>
+    
+      <select id = "selectCoachs" resultType = "com.people3.model.vo.Coach">
+       select * from coach where courtno = #{courtNo};
+    </select>
+    
 </mapper>
