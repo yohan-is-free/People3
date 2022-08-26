@@ -97,7 +97,7 @@
 					<div style = "width : 75%; margin: auto; padding-top : 40px;">
 						<h2><b>테니스장 예약</b></h2>
 						<div class="container" style = 'text-align : center; margin : 20px;'>
-							<div class="row">
+							<div class="row" style = "width :100%;">
 								<c:forEach  var="GJT" items="${GJTennisInfo}">
 									<div class="col-3 tennis_area" >
 						    			<p style = "padding : 7px; font-size : 15px;" data-no = ${GJT.courtNo}>${GJT.courtName}</p>
