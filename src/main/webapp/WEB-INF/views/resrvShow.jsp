@@ -86,8 +86,8 @@
 				<div class="footer_top">
 					<div class="inner">
 						<ul class="foot_menu">
-							<li><a href=""><b style = "color : #F29600;">개인정보처리방침</b></a></li>
-							<li><a href=""><b>이용약관</b></a></li>
+							<li><a><b style = "color : #F29600;">개인정보처리방침</b></a></li>
+							<li><a><b>이용약관</b></a></li>
 						</ul>
 						<div class="family_site">
 							<div class="con_site">

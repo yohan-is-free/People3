@@ -2,6 +2,8 @@ package com.people3.tennis;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,7 +64,7 @@ public class ResrvController {
 	}
 	
 	@PostMapping("/courtResrv.do")
-	public String saveCourtResrv(Reservation resrv) {
+	public String saveCourtResrv(HttpSession session, Reservation resrv) {
 		resrv.setId("test");
 		resrv.setRevType("코트 사용");
 		log.info("ResrvInfo ===> {}",resrv);
@@ -71,7 +73,7 @@ public class ResrvController {
 	}
 	
 	@PostMapping("/lessonResrv.do")
-	public String saveLessonResrv(Reservation resrv) {
+	public String saveLessonResrv(HttpSession session, Reservation resrv) {
 		resrv.setId("test");
 		resrv.setRevType("레슨 수강");
 		log.info("ResrvInfo ===> {}",resrv);
