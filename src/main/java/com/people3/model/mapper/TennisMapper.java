@@ -32,8 +32,6 @@ public interface TennisMapper {
 
 	List<String> selectCLS(CLS cls);
 
-	void insertResrv(Reservation resrv);
-
 	void insertCourtResrv(Reservation resrv);
 
 	void insertLessonResrv(Reservation resrv);
