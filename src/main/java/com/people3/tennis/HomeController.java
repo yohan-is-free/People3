@@ -42,8 +42,5 @@ public class HomeController {
 		return "boardlist";
 	}
 	
-	@RequestMapping(value = "/productlist.do")
-	public String productlistForm() {
-		return "productlist";
-	}
+	
 }

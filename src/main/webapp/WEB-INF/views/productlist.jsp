@@ -1,24 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix='C' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <title>Tennis_Reservation</title>
 <link rel="stylesheet" type="text/css" href="resources/css/common.css">
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+
 <style type="text/css">
 .subcontent {
 	margin: 40px 100px;
-	text-align : center;
+	text-align: center;
 }
 
 .item_cont {
 	display: inline-block;
 	width: 200px;
-	margin : 35px;
-	text-align : left;
+	margin: 35px;
+	text-align: left;
 }
 
+.int_pdt {
+	margin: 140px;
+}
+
+.line {
+	margin: 140px;
+}
 </style>
 </head>
 <body>
@@ -85,161 +94,82 @@
 					</ul>
 				</div>
 			</div>
-
-			<form id="listFormTennis" method="post" action="">
-				<input type="hidden" name="reserveDate" id="quickReserveDate">
-				<input type="hidden" name="startT" id="quickStartT"> <input
-					type="hidden" name="endT" id="quickEndT">
-			</form>
+			<br> <span class="int_pdt">상품 <strong>100</strong> 개 - 최근
+				<b>한 달</b>간의 데이터가 <b>24시간</b> 간격으로 <b>자동으로 집계되어</b> 업데이트됩니다. 프로그램의 자동
+				추출방식으로 어떤 <b>인위적인 개입</b>이 없습니다. 쇼핑에 도움이 되길 바랍니다.
+			</span> <span class="line">_______________________________________________________________________________________________________________________________________________________</span>
 
 			<div id="content">
 				<div class="subcontent">
-					<div class="item_cont">
-						<div class="item_photo_box">
-							<!--      상품 a태그     -->
-							<a href=""> <!--      제품 이미지     --> <img class='tennis_imgs'
-								src="resources/images/tennis/0.jpg">
+					
+					<C:forEach var="product" items="${list}">
+						<div class="item_cont" style="vertical-align: top;">
+							<div class="item_photo_box">
+								<!--      상품 a태그     -->
+								<a href="${product.pdtsellurl}"> <!--      제품 이미지     --> <img
+									class='tennis_imgs' src="resources/images/tennis/${product.pdtimgpath}">
 
-							</a>
-						</div>
+								</a>
+							</div>
 
-						<!-- //item_photo_box -->
+							<!-- //item_photo_box -->
 
-						<div class="table">
+							<div class="table">
 
-							<div class="item_info_cont">
+								<div class="item_info_cont">
 
-								<div class="item_tit_box">
-									<!--      판매사이트 태그  -->
-									<a> 바볼랏 테니스라켓 부스트 에어로 2020 (260g/102)/그립사이즈 2가지 </a>
-								</div>
-								<!-- //item_tit_box -->
-								<div class="item_money_box">
+									<div class="item_tit_box">
+										<!--      판매사이트 태그  -->
+										<a>${product.pdtname}</a>
+									</div>
+									<!-- //item_tit_box -->
+									<div class="item_money_box">
 
-									<strong class="item_price"
-										style="font-size: 15px; font-weight: 600;">149,000원 </strong>
+										<strong class="item_price"
+											style="font-size: 15px; font-weight: 600;">${product.pdtprice}
+										</strong>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item_cont">
+					</C:forEach>
 
-						<div class="item_photo_box">
-							<!--      상품 a태그     -->
-							<a href=""> <!--      제품 이미지     --> <img class='tennis_imgs'
-								src="resources/images/tennis/0.jpg">
 
-							</a>
-						</div>
-
-						<!-- //item_photo_box -->
-
-						<div class="table">
-
-							<div class="item_info_cont">
-
-								<div class="item_tit_box">
-									<!--      판매사이트 태그  -->
-									<a> 바볼랏 테니스라켓 부스트 에어로 2020 (260g/102)/그립사이즈 2가지 </a>
-								</div>
-								<!-- //item_tit_box -->
-								<div class="item_money_box">
-
-									<strong class="item_price"
-										style="font-size: 15px; font-weight: 600;">149,000원 </strong>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item_cont">
-						<div class="item_photo_box">
-							<!--      상품 a태그     -->
-							<a href=""> <!--      제품 이미지     --> <img class='tennis_imgs'
-								src="resources/images/tennis/0.jpg">
-
-							</a>
-						</div>
-
-						<!-- //item_photo_box -->
-
-						<div class="table">
-
-							<div class="item_info_cont">
-
-								<div class="item_tit_box">
-									<!--      판매사이트 태그  -->
-									<a> 바볼랏 테니스라켓 부스트 에어로 2020 (260g/102)/그립사이즈 2가지 </a>
-								</div>
-								<!-- //item_tit_box -->
-								<div class="item_money_box">
-
-									<strong class="item_price"
-										style="font-size: 15px; font-weight: 600;">149,000원 </strong>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item_cont">
-						<div class="item_photo_box">
-							<!--      상품 a태그     -->
-							<a href=""> <!--      제품 이미지     --> <img class='tennis_imgs'
-								src="resources/images/tennis/0.jpg">
-
-							</a>
-						</div>
-
-						<!-- //item_photo_box -->
-
-						<div class="table">
-
-							<div class="item_info_cont">
-
-								<div class="item_tit_box">
-									<!--      판매사이트 태그  -->
-									<a> 바볼랏 테니스라켓 부스트 에어로 2020 (260g/102)/그립사이즈 2가지 </a>
-								</div>
-								<!-- //item_tit_box -->
-								<div class="item_money_box">
-
-									<strong class="item_price"
-										style="font-size: 15px; font-weight: 600;">149,000원 </strong>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-				<div id="footer">
-					<div class="footer_top">
-						<div class="inner">
-							<ul class="foot_menu">
-								<li><a href=""><b style="color: #F29600;">개인정보처리방침</b></a></li>
-								<li><a href=""><b>이용약관</b></a></li>
-							</ul>
-							<div class="family_site">
-								<div class="con_site">
-									<a class="tit_site">관련사이트</a>
-									<ul class="list_site" style="display: none;">
-										<li><a href="">국민체육진흥공단</a></li>
-										<li><a href="">문화체육관광부</a></li>
-										<li><a href="">경륜경정사업본부</a></li>
-										<li><a href="">KCYCLE 경륜</a></li>
-										<li><a href="">KBOAT 경정</a></li>
-										<li><a href="">서울올림픽파크텔</a></li>
-										<li><a href="">한국스포츠정책과학원</a></li>
-										<li><a href="">서울올림픽기념관</a></li>
-										<li><a href="">소마미술관</a></li>
-										<li><a href="">올림픽공원</a></li>
-										<li><a href="">국민체력센터</a></li>
-										<li><a href="">국민권익위원회</a></li>
-									</ul>
-								</div>
+			</div>
+
+			<div id="footer">
+				<div class="footer_top">
+					<div class="inner">
+						<ul class="foot_menu">
+							<li><a href=""><b style="color: #F29600;">개인정보처리방침</b></a></li>
+							<li><a href=""><b>이용약관</b></a></li>
+						</ul>
+						<div class="family_site">
+							<div class="con_site">
+								<a class="tit_site">관련사이트</a>
+								<ul class="list_site" style="display: none;">
+									<li><a href="">국민체육진흥공단</a></li>
+									<li><a href="">문화체육관광부</a></li>
+									<li><a href="">경륜경정사업본부</a></li>
+									<li><a href="">KCYCLE 경륜</a></li>
+									<li><a href="">KBOAT 경정</a></li>
+									<li><a href="">서울올림픽파크텔</a></li>
+									<li><a href="">한국스포츠정책과학원</a></li>
+									<li><a href="">서울올림픽기념관</a></li>
+									<li><a href="">소마미술관</a></li>
+									<li><a href="">올림픽공원</a></li>
+									<li><a href="">국민체력센터</a></li>
+									<li><a href="">국민권익위원회</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<script>
+		<script>
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'
 			})
