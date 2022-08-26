@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +31,6 @@ public class BoardController {
 		
 		List<Board> list = mapper.getLists();	
 		model.addAttribute("list", list);
-		
 		return "board"; // /WEB-INF/views/boardList.jsp ->forward
 		
 	}
@@ -60,13 +60,18 @@ public class BoardController {
 		return "redirect:/board.do";
 	}
 	
-	@GetMapping("/boardUpdateForm.do/{boardNo}")
-	public String boardUpdateForm(@PathVariable("boardNo") int boardNo, Model model) {
+	@GetMapping("/boardUpdateForm.do")
+	public String boardUpdateForm(int boardNo, Model model) {
 		Board vo = mapper.boardContent(boardNo);
 		model.addAttribute("vo", vo);
 		return "boardUpdate";
 	}
 	
+	@PostMapping("/boardUpdate.do")
+	public String boardUpdate(Board vo) {
+		mapper.boardUpdate(vo);
+		return "redirect:/board.do";
+	}
 	
 	
 }

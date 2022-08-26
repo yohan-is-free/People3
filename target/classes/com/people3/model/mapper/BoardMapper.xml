@@ -24,5 +24,8 @@
 		boardNo=#{boardNo}
 	</delete>
 	
-	
+	<update id="boardUpdate" parameterType="com.people3.model.vo.Board">
+	update board set title=#{title}, content=#{content}
+	where boardNo=#{boardNo}
+	</update>
 </mapper>

@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-	<% pageContext.setAttribute("newLineChar", "\n");%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -102,37 +100,38 @@
 					<!--<h2>MVC02</h2>  -->
 					<div class="panel panel-default">
 						<div class="panel-heading">BOARD</div>
-
-						<form action="boardInsert.do" method="post">
-							<table class="table">
-								<tr>
-									<td>제목</td>
-									<td>${vo.title}</td>
-								</tr>
-								
-								<tr>
-									<td>내용</td>
-									<td>${fn:replace(vo.content, newLineChar,"<br>")}</td>
-								</tr>
-								
-								<tr>
-									<td>작성자</td>
-									<td>${vo.id}</td>
-								</tr>
-								
-									<tr>
-									<td>작성일</td>
-									<td>${vo.date}</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center">
-										<a href="boardUpdateForm.do?boardNo=${vo.boardNo}" class="btn btn-primary btn-xs">수정화면</a>
-										<a href="boardDelete.do/${vo.boardNo}" class="btn btn-warning btn-xs">삭제</a>
-										<a href="board.do" class="btn btn-info btn-xs">목록</a>
-									</td>
-								</tr>
-							</table>
+						
+						<form action="boardUpdate.do" method="post">
+						<input type="hidden" name="boardNo" value="${vo.boardNo}"/>
+						<table class="table table-dordered">
+							<tr>
+							<td>제목</td>
+							<td><input type="text" name="title" class="form-control" value="${vo.title}"> </td>
+							</tr>
+							
+							<tr>
+							<td>내용</td>
+							<td> <textarea rows="7" class="form-control" name="content">${vo.content}</textarea> </td>
+							</tr>
+							
+							<tr>
+							<td>작성자</td>
+							<td><input type="text" class="form-control" value="${vo.id}" readonly="readonly"></td>
+							</tr>
+							
+							<tr>
+							<td colspan="2" align="center">
+								<button type="submit" class="btn btn-primary btn-xs">수정</button>
+								<button type="reset" class="btn btn-warning btn-xs">취소</button>
+								<button type="button" class="btn btn-info btn-xs"
+									onclick="location.href='boardList.do'">목록</button>
+							</td>
+						</tr>
+						</table>
+						
 						</form>
+						<!-- <div class="panel-footer">Spring특화과정A_황혜윤</div>
+  </div> -->
 					</div>
 				</div>
 			</div>

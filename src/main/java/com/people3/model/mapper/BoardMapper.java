@@ -10,5 +10,6 @@ public interface BoardMapper {
 	public void boardInsert(Board vo);
 	public Board boardContent(int boardNo);
 	public void boardDelete(int boardNo);
+	public void boardUpdate(Board vo);
 	
 }
