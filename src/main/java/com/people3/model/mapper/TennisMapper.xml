@@ -25,4 +25,19 @@
        select * from coach where courtno = #{courtNo};
     </select>
     
+    <select id = "selectCTS" parameterType="com.people3.model.vo.CTS" resultType="java.lang.String">
+    	select * from lessontime where ltime not in (select revtime from reservation where revdate = #{revdate} and courtcode=#{revcourt});
+    </select>
+    
+    <select id = "selectCLS" parameterType="com.people3.model.vo.CLS" resultType="java.lang.String">
+    	select * from lessontime where ltime not in (select revtime from reservation where revdate = #{revdate} and (courtcode=#{revcourt} or coachno=#{revcoach}));
+    </select>
+    
+    <insert id = "insertCourtResrv" parameterType="com.people3.model.vo.Reservation">
+    	insert into reservation values(#{id},null,#{courtCode},#{revDate},#{revTime},#{revType});
+    </insert>
+    
+    <insert id = "insertLessonResrv" parameterType="com.people3.model.vo.Reservation">
+    	insert into reservation values(#{id},#{coachNo},#{courtCode},#{revDate},#{revTime},#{revType});
+    </insert>
 </mapper>

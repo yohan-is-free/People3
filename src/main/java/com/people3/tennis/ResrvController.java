@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.people3.model.mapper.TennisMapper;
 import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.Reservation;
 import com.people3.model.vo.TennisCourt;
 
 import lombok.RequiredArgsConstructor;
@@ -52,5 +54,28 @@ public class ResrvController {
 		 */
 		
 		return "resrvDetail";
+	}
+	
+	@RequestMapping("/resrvShow.do")
+	public String resrcShow() {
+		return "resrvShow";
+	}
+	
+	@PostMapping("/courtResrv.do")
+	public String saveCourtResrv(Reservation resrv) {
+		resrv.setId("test");
+		resrv.setRevType("코트 사용");
+		log.info("ResrvInfo ===> {}",resrv);
+		tmapper.insertCourtResrv(resrv);
+		return "redirect:/resrvShow.do";
+	}
+	
+	@PostMapping("/lessonResrv.do")
+	public String saveLessonResrv(Reservation resrv) {
+		resrv.setId("test");
+		resrv.setRevType("레슨 수강");
+		log.info("ResrvInfo ===> {}",resrv);
+		tmapper.insertLessonResrv(resrv);
+		return "redirect:/resrvShow.do";
 	}
 }

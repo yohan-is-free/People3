@@ -39,14 +39,21 @@
 		        initialView: 'dayGridMonth',
 		        dateClick: (date) => {
 		        	let currDate = moment().format('YYYY-MM-DD');
-		        	if (currDate <= date.dateStr) {
+		        	if (currDate < date.dateStr) {
 		        		calendar.removeAllEvents();
 		        		calendar.addEvent({title:"Selected", start:date.dateStr});
+		        		$('.slct_resrv_c_date').val(date.dateStr);
+		        		$('.slct_resrv_l_date').val(date.dateStr);
+		        		$('.slct_resrv_c_court').val("코트");
+						$('.slct_resrv_c_time').empty().append("<option>시간</option>");
+						$('.slct_resrv_l_coach').val(0);
+						$('.slct_resrv_l_court').val("코트");
+						$('.slct_resrv_l_time').empty().append("<option>시간</option>");
 		        	} else {
 		        		Swal.fire({
-		        			text : "오늘 날짜 이전일에 대해서는 예약이 불가능합니다.",
+		        			text : "선택하신 날은 예약이 불가능합니다.",
 		        			icon : "warning"
-		        		}).then();
+		        		}).then(() => {console.log("Sorry....")});
 		        	}
 		        }
 	        });
@@ -74,7 +81,7 @@
 					<nav class="gnb">
 						<ul>
 							<li class="pc"><a href = "./" class="home">메인</a></li>
-							<li><a href="" class="cart">예약내역</a></li>
+							<li><a href="./resrvShow.do"" class="cart">예약내역</a></li>
 							<li><a href="" class="mypage">마이페이지</a></li>
 						</ul>
 					</nav>
@@ -89,7 +96,7 @@
 						</ul>
 						<ul class="all_menu">
 							<li><a href="./join.do">회원가입</a></li>
-							<li><a href="">예약내역</a></li>
+							<li><a href="./resrvShow.do"">예약내역</a></li>
 							<li><a href="">마이페이지</a></li>
 							<li><a href="">공지사항</a></li>
 						</ul>
@@ -127,7 +134,9 @@
 			</div>
 				
 			<div id="content">
-				<div style = "width : 75%; margin: auto; padding-top : 40px; padding-bottom : 40px;">
+				
+				<div style = "width : 75%; margin: auto; padding-top : 40px; padding-bottom : 0px;">
+					<h4 style = "padding-bottom : 10px;">${GJTInfo.courtName}</h4>
 					<div class="tab">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<li class="nav-item nav-resrv-court" role="presentation">
@@ -152,11 +161,11 @@
 						<!-- 테니스 코트 예약 -->
 						<div class="tab-pane fade show active" id="userinfo" role="tabpanel" aria-labelledby="userinfo-tab">
 							<form action = "./courtResrv.do" method = 'post'>
-								<input class = 'hidden' type = 'text' name = 'revDate'/>
+								<input class = 'hidden slct_resrv_c_date' type = 'text' name = 'revDate'/>
 								
 								<div class="input-group flex-nowrap">
 									<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
-									<select class = "form-control form-select">
+									<select class = "form-control form-select slct_resrv_c_court" name = "courtCode">
 										<option>코트</option>
 										<c:forEach var = 'court' items = "${courts}">
 											<option>${court.courtCode}</option>
@@ -165,7 +174,7 @@
 								</div>
 								<div class="input-group flex-nowrap">
 									<span class="input-group-text" id="addon-wrapping">시간 선택</span>
-									<select class = "form-control form-select">
+									<select class = "form-control form-select slct_resrv_c_time" name = "revTime">
 										<option>시간</option>
 									</select>
 								</div>
@@ -179,13 +188,13 @@
 						<!-- 레슨 예약 -->
 						<div class="tab-pane fade" id="myreview" role="tabpanel" aria-labelledby="myreview-tab">
 							
-							<form action = "./courtResrv.do" method = 'post'>
-								<input class = 'hidden' type = 'text' name = 'revDate'/>
+							<form action = "./lessonResrv.do" method = 'post'>
+								<input class = 'hidden slct_resrv_l_date' type = 'text' name = 'revDate'/>
 								<c:choose>
 									<c:when test = '${GJTInfo.isLesson eq "가능"}'>
 										<div class="input-group flex-nowrap">
 											<span class="input-group-text" id="addon-wrapping">코치 선텍</span>
-											<select class = "form-control form-select">
+											<select class = "form-control form-select slct_resrv_l_coach" name ="coachNo">
 												<option value = 0>코치</option>
 												<c:forEach var = 'coach' items = '${coachs}'>
 													<option value = ${coach.coachNo}>${coach.coachName} (Tel. ${coach.coachTel})</option>
@@ -195,14 +204,17 @@
 										
 										<div class="input-group flex-nowrap">
 											<span class="input-group-text" id="addon-wrapping">코트 선텍</span>
-											<select class = "form-control form-select">
+											<select class = "form-control form-select slct_resrv_l_court" name = "courtCode">
 												<option>코트</option>
+												<c:forEach var = 'court' items = "${courts}">
+													<option>${court.courtCode}</option>
+												</c:forEach>
 											</select>
 										</div>
 										
 										<div class="input-group flex-nowrap">
 											<span class="input-group-text" id="addon-wrapping">시간 선택</span>
-											<select class = "form-control form-select">
+											<select class = "form-control form-select slct_resrv_l_time" name = "revTime">
 												<option>시간</option>
 											</select>
 										</div>
@@ -220,34 +232,34 @@
 					</div>
 				</div>
 			</div>
-
-			<div id="footer">
-				<div class="footer_top">
-					<div class="inner">
-						<ul class="foot_menu">
-							<li><a href=""><b style = "color : #F29600;">개인정보처리방침</b></a></li>
-							<li><a href=""><b>이용약관</b></a></li>
-						</ul>
-						<div class="family_site">
-							<div class="con_site">
-								<a class="tit_site">관련사이트</a>
-								<ul class="list_site" style="display: none;">
-									<li><a href="">국민체육진흥공단</a></li>
-									<li><a href="">문화체육관광부</a></li>
-									<li><a href="">경륜경정사업본부</a></li>
-									<li><a href="">KCYCLE 경륜</a></li>
-									<li><a href="">KBOAT 경정</a></li>
-									<li><a href="">서울올림픽파크텔</a></li>
-									<li><a href="">한국스포츠정책과학원</a></li>
-									<li><a href="">서울올림픽기념관</a></li>
-									<li><a href="">소마미술관</a></li>
-									<li><a href="">올림픽공원</a></li>
-								</ul>
-							</div>
+		</div>
+		<div id="footer"">
+			<div class="footer_top">
+				<div class="inner">
+					<ul class="foot_menu">
+						<li><a href=""><b style = "color : #F29600;">개인정보처리방침</b></a></li>
+						<li><a href=""><b>이용약관</b></a></li>
+					</ul>
+					<div class="family_site">
+						<div class="con_site">
+							<a class="tit_site">관련사이트</a>
+							<ul class="list_site" style="display: none;">
+								<li><a href="">국민체육진흥공단</a></li>
+								<li><a href="">문화체육관광부</a></li>
+								<li><a href="">경륜경정사업본부</a></li>
+								<li><a href="">KCYCLE 경륜</a></li>
+								<li><a href="">KBOAT 경정</a></li>
+								<li><a href="">서울올림픽파크텔</a></li>
+								<li><a href="">한국스포츠정책과학원</a></li>
+								<li><a href="">서울올림픽기념관</a></li>
+								<li><a href="">소마미술관</a></li>
+								<li><a href="">올림픽공원</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 		
 		<script
@@ -274,11 +286,90 @@
 				}
 			})
 			
+			$('.slct_resrv_c_court').on('change',(e) => {
+				let revdate = $('.slct_resrv_c_date').val();
+				let revcourt = $('.slct_resrv_c_court').val();
+				if(revcourt !== "코트") {
+					if(revdate === '') {
+						Swal.fire({
+							text : "날짜를 선택해 주세요!!!",
+							icon : "warning"
+						}).then(() => {
+								$('.slct_resrv_c_court').val("코트");
+								$('.slct_resrv_c_time').empty().append("<option>시간</option>")
+							})
+					} else {
+						$.ajax({
+							url : "./court/timesearch.do",
+							type : "post",
+							data : {"revdate": revdate, "revcourt" : revcourt},
+							dataType : 'json',
+							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+							success : function(result) {
+								$('.slct_resrv_c_time').empty().append("<option>시간</option>");
+								for (let i = 0; i < result["length"]; i++) {
+									$('.slct_resrv_c_time').append("<option>"+result[i]+"</option>")
+								}
+							},
+							error : function(e) {
+								console.log(e);
+							}
+						});
+					}
+				}
+			})
+			
 		</script>
 		
 		<c:choose>
 			<c:when test = '${GJTInfo.isLesson eq "가능"}'>
-				<script></script>
+				<script>
+					$('.slct_resrv_l_coach').on('change',() => {
+						if($('.slct_resrv_l_coach').val() !== 0) {
+							if($('.slct_resrv_l_date').val() === "") {
+								Swal.fire({
+									text : "날짜를 선택해 주세요!!!",
+									icon : "warning"
+								}).then(() => {
+										$('.slct_resrv_l_coach').val(0);
+										$('.slct_resrv_l_time').empty().append("<option>시간</option>")
+								})
+							}
+						}
+					})
+					
+					$('.slct_resrv_l_court').on('change',() => {
+						let revdate = $('.slct_resrv_l_date').val()
+						let revcoach = $('.slct_resrv_l_coach').val()
+						let revcourt = $('.slct_resrv_l_court').val()
+						if (revcoach === "0" || revdate === "") {
+							Swal.fire({
+								text : "날짜와 코치 정보를 확인해 주세요!!!",
+								icon : "warning"
+							}).then(() => {
+									$('.slct_resrv_l_court').val("코트");
+									$('.slct_resrv_l_time').empty().append("<option>시간</option>")
+							})
+						} else {
+							$.ajax({
+								url : "./lesson/timesearch.do",
+								type : "post",
+								data : {"revdate": revdate, "revcourt" : revcourt, "revcoach": revcoach},
+								dataType : 'json',
+								contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+								success : function(result) {
+									$('.slct_resrv_l_time').empty().append("<option>시간</option>");
+									for (let i = 0; i < result["length"]; i++) {
+										$('.slct_resrv_l_time').append("<option>"+result[i]+"</option>")
+									}
+								},
+								error : function(e) {
+									console.log(e);
+								}
+							});
+						}
+					})
+				</script>
 			</c:when>
 			<c:otherwise>
 				<script>

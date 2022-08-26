@@ -40,7 +40,7 @@
 					<nav class="gnb">
 						<ul>
 							<li class="pc"><a href = "./" class="home">메인</a></li>
-							<li><a href="" class="cart">예약내역</a></li>
+							<li><a href="./resrvShow.do" class="cart">예약내역</a></li>
 							<li><a href="" class="mypage">마이페이지</a></li>
 						</ul>
 					</nav>
@@ -55,7 +55,7 @@
 						</ul>
 						<ul class="all_menu">
 							<li><a href="./join.do">회원가입</a></li>
-							<li><a href="">예약내역</a></li>
+							<li><a href="./resrvShow.do"">예약내역</a></li>
 							<li><a href="">마이페이지</a></li>
 							<li><a href="">공지사항</a></li>
 						</ul>
@@ -150,26 +150,27 @@
 						<h3><b>이용 시간/요금</b></h3>
 						<div style = 'margin : 20px;'>
 							<table class="table" style = 'text-align : center; vertical-align: middle;'>
-							<thead>
-								<tr class = 'bg-light'>
-									<th style = "width:20%;"></th>
-									<th style = "width:40%;"><b>평일</b></th>
-									<th style = "width:40%;"><b>주말/공휴일</b></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th class = 'bg-light'><b></b>주간<br/>06:00 - 18:00</th>
-									<td><b>20,000원</b></td>
-									<td><b>30,000원</b></td>
-								</tr>
-								<tr>
-									<th class = 'bg-light'><b>야간</b><br/>18:00 - 22:00</th>
-									<td><b>30,000원</b></td>
-									<td><b>45,000원</b></td>
-								</tr>
-							</tbody>
-						</table>
+								<thead>
+									<tr class = 'bg-light'>
+										<th style = "width:20%;"></th>
+										<th style = "width:40%;"><b>평일</b></th>
+										<th style = "width:40%;"><b>주말/공휴일</b></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th class = 'bg-light'><b></b>주간<br/>06:00 - 18:00</th>
+										<td><b>20,000원</b></td>
+										<td><b>30,000원</b></td>
+									</tr>
+									<tr>
+										<th class = 'bg-light'><b>야간</b><br/>18:00 - 22:00</th>
+										<td><b>30,000원</b></td>
+										<td><b>45,000원</b></td>
+									</tr>
+								</tbody>
+							</table>
+							<p>※ 예약은 하루 전날 까지만 가능합니다.</p>
 						</div>
 					</div>
 				</div>

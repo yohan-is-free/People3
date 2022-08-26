@@ -10,6 +10,6 @@ public class Reservation {
 	private String courtCode;
 	private String revDate;
 	private String revTime;
-	private String rebType;
+	private String revType;
 	
 }

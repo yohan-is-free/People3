@@ -79,46 +79,6 @@
 				</div>
 
 				<div id="content">
-					<div class="section info_area01">
-						<div class="inner">
-							<div class="info_con01">
-								<h2 class="tit_type01">테니스장/레슨<br><strong>예약신청</strong></h2>
-								<a href="./resrv.do" class="btn_app">예약신청</a>
-								<span class="bg_img"><img src="resources/images/content/tennisman.png" alt=""></span>
-							</div>
-							<div class="info_con02">
-								<h2 class="tit_type01">공지사항</h2>
-								<ul class="notice">
-									<li>
-										<a href="">
-											실외 코트 개보수 공사 알림 (22.8.22~ ) 
-										</a>
-									</li>
-								
-									<li>
-										<a href="">
-											테니스 대회 안내 (2022년 8월) 
-										</a>
-									</li>
-								</ul>
-								<a href="" class="con_more" title="공지사항 더보기">더보기</a>
-							</div>
-							<div class="info_con03">
-								<h2 class="tit_type01">고객센터 안내</h2>
-								<p class="txt">테니스장 <strong>02-2180-3778</strong></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="section info_area02">
-						<div class="inner">
-							<div class="info_con">
-								<h2 class="tit_type01">예약신청 안내</h2>
-								<p class="con_txt">예약신청이 어려우신가요? <br>안내 페이지에서 자세하게 설명 드립니다.</p>
-								<a href="" class="btn_info">신청방법 안내</a>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 

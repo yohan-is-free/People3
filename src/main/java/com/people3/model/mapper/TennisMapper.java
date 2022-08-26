@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.people3.model.vo.CLS;
+import com.people3.model.vo.CTS;
 import com.people3.model.vo.Cnt;
 import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.Reservation;
 import com.people3.model.vo.TennisCourt;
 
 
@@ -24,5 +27,15 @@ public interface TennisMapper {
 	List<TennisCourt> selectCourts(int courtNo);
 
 	List<Coach> selectCoachs(int courtNo);
-	
+
+	List<String> selectCTS(CTS cts);
+
+	List<String> selectCLS(CLS cls);
+
+	void insertResrv(Reservation resrv);
+
+	void insertCourtResrv(Reservation resrv);
+
+	void insertLessonResrv(Reservation resrv);
+
 }
