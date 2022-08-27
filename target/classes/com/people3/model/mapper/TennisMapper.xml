@@ -21,7 +21,7 @@
     	select * from tennis_court where courtno = #{courtNo};
     </select>
     
-      <select id = "selectCoachs" resultType = "com.people3.model.vo.Coach">
+    <select id = "selectCoachs" resultType = "com.people3.model.vo.Coach">
        select * from coach where courtno = #{courtNo};
     </select>
     
@@ -40,4 +40,8 @@
     <insert id = "insertLessonResrv" parameterType="com.people3.model.vo.Reservation">
     	insert into reservation values(#{id},#{coachNo},#{courtCode},#{revDate},#{revTime},#{revType});
     </insert>
+    
+    <select id = "selectEvents" resultType="com.people3.model.vo.Reservation">
+    	select * from reservation where id = #{id};
+    </select>
 </mapper>

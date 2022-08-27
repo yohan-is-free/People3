@@ -4,8 +4,53 @@
 <html lang="ko">
 	<head>
 		<title>Tennis_Reservation</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="resources/css/common.css">
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src = "resources/js/moment.js"></script>
+		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<link href='resources/fullcalendar/lib/main.css' rel='stylesheet' />
+		<script src='resources/fullcalendar/lib/main.js'></script>
+	    <script>
+	
+		    document.addEventListener('DOMContentLoaded', function() {
+			    var calendarEl = document.getElementById('calendar');
+			    var calendar = new FullCalendar.Calendar(calendarEl, {
+					height: '700px',
+					expandRows: true,
+					initialView: 'dayGridMonth',
+					headerToolbar: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+						}
+				    });
+			    calendar.render();
+			    $.ajax({
+			        contentType:'application/json',
+			        dataType:'json',
+			        url:'calendar/getall.do',
+			        type:'post',
+			        success:function(result){
+						console.log(result);
+						for (let i = 0; i < result.length; i++) {
+							calendar.addEvent({
+								title : decodeURI(result[i].title).replace('+',' '),
+								start : result[i].start,
+								end : result[i].end
+							})
+						}
+			        },
+			        error:function(){
+			            Swal.fire({
+			            	text: "데이터를 불러 오지 못했습니다.",
+			            	icon : "warning",
+			            }).then()
+			        }
+			    });
+		    });
+	
+	    </script>
 	</head>
 	<body style = "min-width : 1200px;">
 		<div id="skipNavi">
@@ -79,6 +124,13 @@
 				</div>
 
 				<div id="content">
+					<div style = "width : 75%; margin: auto; padding-top : 40px; padding-bottom : 0px;">
+						<div id = "calendar">
+						</div>
+					</div>
+					<div style = "width : 75%; margin: auto; padding-top : 10px; padding-bottom : 0px; text-align : right;">
+						<button class = "btn btn-dark resrv-dark-btn">예약하기</button>
+					</div>
 				</div>
 			</div>
 
@@ -129,6 +181,10 @@
 				} else {
 					$('.list_site')[0].style.display = 'none'
 				}
+			})
+			
+			$('.resrv-dark-btn').on('click',() => {
+				location.href="./resrv.do"
 			})
 		</script>
 	</body>

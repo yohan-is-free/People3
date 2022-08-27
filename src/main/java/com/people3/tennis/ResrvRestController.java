@@ -1,5 +1,7 @@
 package com.people3.tennis;
 
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.people3.model.mapper.TennisMapper;
 import com.people3.model.vo.CLS;
 import com.people3.model.vo.CTS;
 import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.Reservation;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -77,6 +81,34 @@ public class ResrvRestController {
 		}
 		obj.addProperty("length", times.size());
 		return obj.toString();
+	}
+	
+	@SneakyThrows
+	@PostMapping(value = "/calendar/getall.do")
+	public String calendarGetAll() {
+//		log.info("Event 조회");
+		List<JsonObject> events = new ArrayList<>();
+		List<Reservation> resrvs = tmapper.selectEvents("test");
+		for (Reservation resrv : resrvs) {
+//			log.info("event ===> {}",resrv);
+			String[] tmp = null;
+			tmp = resrv.getRevTime().split("-");
+			JsonObject obj = new JsonObject();
+			obj.addProperty("title", resrv.getCourtCode() + " " + URLEncoder.encode(resrv.getRevType(),"UTF-8"));
+			obj.addProperty("start", resrv.getRevDate() + " " + tmp[0]);
+			obj.addProperty("end", resrv.getRevDate() + " " + tmp[1]);
+			events.add(obj);
+		}
+		
+		int i = 0;
+		JsonObject rsv = new JsonObject();
+		for (JsonObject obj : events) {
+			rsv.add(""+i,obj);
+			i++;
+		}
+		rsv.addProperty("length", events.size());
+		log.error(rsv.toString());
+		return rsv.toString();
 	}
 	
 }

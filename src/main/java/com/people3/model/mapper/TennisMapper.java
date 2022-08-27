@@ -36,4 +36,6 @@ public interface TennisMapper {
 
 	void insertLessonResrv(Reservation resrv);
 
+	List<Reservation> selectEvents(String id);
+
 }
