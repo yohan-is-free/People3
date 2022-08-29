@@ -244,16 +244,8 @@
 						<div class="con_site">
 							<a class="tit_site">관련사이트</a>
 							<ul class="list_site" style="display: none;">
-								<li><a href="">국민체육진흥공단</a></li>
-								<li><a href="">문화체육관광부</a></li>
-								<li><a href="">경륜경정사업본부</a></li>
-								<li><a href="">KCYCLE 경륜</a></li>
-								<li><a href="">KBOAT 경정</a></li>
-								<li><a href="">서울올림픽파크텔</a></li>
-								<li><a href="">한국스포츠정책과학원</a></li>
-								<li><a href="">서울올림픽기념관</a></li>
-								<li><a href="">소마미술관</a></li>
-								<li><a href="">올림픽공원</a></li>
+								<li><a href="https://smhrd.or.kr/">스마트인재개발원</a></li>
+								<li><a href="https://gj-aischool.or.kr/">광주인공지능사관학교</a></li>
 							</ul>
 						</div>
 					</div>
