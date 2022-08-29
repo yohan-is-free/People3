@@ -39,7 +39,42 @@
 							left: 'prev,next today',
 							center: 'title',
 							right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-						}
+						},
+					eventClick : (event) => {
+						Swal.fire({
+							text: "예약을 취소하시겠습니까?",
+							icon: "question",
+							showCancelButton: true
+						}).then((result) => {
+							if(result.isConfirmed) {
+								$.ajax({
+							        contentType:'application/x-www-form-urlencoded',
+							        data: {"courtCode" : event.event.title.split(" ")[1],
+							        	"revDate" : moment(event.event.start).format("YYYY-MM-DD hh:mm").split(" ")[0],	
+							        	"revTime" : moment(event.event.start).format("YYYY-MM-DD hh:mm").split(" ")[1]+"%"	
+							        },
+							        dataType:'json',
+							        url:'cancelResrv.do',
+							        type:'POST',
+							        success:function(result){
+										if(result.result) {
+											Swal.fire({
+												title : '예약이 취소되었습니다.',
+												icon : 'success'
+											}).then(location.reload())
+										} else {
+											Swal.fire({
+												title : '다시 시도해 주십시오.',
+												icon : 'info'
+											})
+										}
+							        },
+							        error:function(){
+							        }
+							    });
+							}
+						})
+					}
 				    });
 			    calendar.render();
 			    $.ajax({
@@ -48,7 +83,6 @@
 			        url:'calendar/getall.do',
 			        type:'post',
 			        success:function(result){
-						console.log(result);
 						for (let i = 0; i < result.length; i++) {
 							calendar.addEvent({
 								title : tennis_dict[result[i].title.split("_")[0]] + decodeURI(result[i].title).replace('+',' '),

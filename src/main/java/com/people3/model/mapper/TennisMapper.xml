@@ -44,4 +44,8 @@
     <select id = "selectEvents" resultType="com.people3.model.vo.Reservation">
     	select * from reservation where id = #{id} and revdate >= curdate();
     </select>
+    
+    <delete id = "deleteResrv" parameterType="com.people3.model.vo.Reservation">
+    	delete from reservation where id = #{id} and revdate = #{revDate} and courtcode = #{courtCode} and revtime like #{revTime};
+    </delete>
 </mapper>

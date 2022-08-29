@@ -38,4 +38,6 @@ public interface TennisMapper {
 
 	List<Reservation> selectEvents(String id);
 
+	void deleteResrv(Reservation resrv);
+
 }

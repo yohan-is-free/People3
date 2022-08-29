@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -106,4 +107,18 @@ public class ResrvRestController {
 		return rsv.toString();
 	}
 	
+	@PostMapping(value = "/cancelResrv.do", produces = "application/json; charset=utf8")
+	public String cancelResrv(Reservation resrv) {
+		JsonObject obj = new JsonObject();
+		resrv.setId("test");
+		// log.info("data ===> {}",resrv);
+		try {
+			tmapper.deleteResrv(resrv);
+			obj.addProperty("result", true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			obj.addProperty("result", false);
+		}
+		return obj.toString();
+	}
 }

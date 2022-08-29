@@ -67,7 +67,7 @@ public class ResrvController {
 	public String saveCourtResrv(HttpSession session, Reservation resrv) {
 		resrv.setId("test");
 		resrv.setRevType("코트 사용");
-		log.info("ResrvInfo ===> {}",resrv);
+		// log.info("ResrvInfo ===> {}",resrv);
 		tmapper.insertCourtResrv(resrv);
 		return "redirect:/resrvShow.do";
 	}
