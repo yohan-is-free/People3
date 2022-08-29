@@ -12,7 +12,22 @@
 		<link href='resources/fullcalendar/lib/main.css' rel='stylesheet' />
 		<script src='resources/fullcalendar/lib/main.js'></script>
 	    <script>
-	
+			
+	    	let tennis_dict = {
+	    			1 : "염주전천후테니스장 ",
+	    			2 : "염주실외테니스장 ",
+	    			3 : "월드테니스장 ",
+	    			4 : "광주테니스코트 ",
+	    			5 : "진월국제테니스장 ",
+	    			6 : "봉선테니스코트 ",
+	    			7 : "패밀리테니스코트장 ",
+	    			8 : "일곡테니스장 ",
+	    			9 : "88테니스코트장 ",
+	    			10 : "첨단구립테니스장 ",
+	    			11 : "소촌구립테니스장 ",
+	    			12 : "월곡테니스코트장 "
+	    	}
+	    
 		    document.addEventListener('DOMContentLoaded', function() {
 			    var calendarEl = document.getElementById('calendar');
 			    var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -35,7 +50,7 @@
 						console.log(result);
 						for (let i = 0; i < result.length; i++) {
 							calendar.addEvent({
-								title : decodeURI(result[i].title).replace('+',' '),
+								title : tennis_dict[result[i].title.split("_")[0]] + decodeURI(result[i].title).replace('+',' '),
 								start : result[i].start,
 								end : result[i].end
 							})
