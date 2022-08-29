@@ -50,8 +50,8 @@
 								$.ajax({
 							        contentType:'application/x-www-form-urlencoded',
 							        data: {"courtCode" : event.event.title.split(" ")[1],
-							        	"revDate" : moment(event.event.start).format("YYYY-MM-DD hh:mm").split(" ")[0],	
-							        	"revTime" : moment(event.event.start).format("YYYY-MM-DD hh:mm").split(" ")[1]+"%"	
+							        	"revDate" : moment(event.event.start).format("YYYY-MM-DD HH:mm").split(" ")[0],	
+							        	"revTime" : moment(event.event.start).format("YYYY-MM-DD HH:mm").split(" ")[1]+"%"	
 							        },
 							        dataType:'json',
 							        url:'cancelResrv.do',
@@ -61,7 +61,7 @@
 											Swal.fire({
 												title : '예약이 취소되었습니다.',
 												icon : 'success'
-											}).then(location.reload())
+											}).then(() => {location.reload()})
 										} else {
 											Swal.fire({
 												title : '다시 시도해 주십시오.',
