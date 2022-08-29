@@ -25,7 +25,8 @@
 	    			9 : "88테니스코트장 ",
 	    			10 : "첨단구립테니스장 ",
 	    			11 : "소촌구립테니스장 ",
-	    			12 : "월곡테니스코트장 "
+	    			12 : "월곡테니스코트장 ",
+	    			13 : "안청테니스장 "
 	    	}
 	    
 		    document.addEventListener('DOMContentLoaded', function() {
