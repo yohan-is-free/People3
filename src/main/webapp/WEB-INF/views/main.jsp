@@ -36,8 +36,8 @@
 						<ul class="all_menu">
 							<li><a href="./resrv.do">예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
-							<li><a href="">신청방법안내</a></li>
-							<li><a href="">시설이용안내</a></li>
+							<li><a href="">테니스 상품 정보</a></li>
+							<li><a href="">매칭</a></li>
 						</ul>
 						<ul class="all_menu">
 							<li><a href="./join.do">회원가입</a></li>
@@ -72,8 +72,8 @@
 						<ul class="sticky_menu">
 							<li><a href="./resrv.do">예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
-							<li><a href="">신청방법안내</a></li>
-							<li><a href="">시설이용안내</a></li>
+							<li><a href="">테니스 상품 정보</a></li>
+							<li><a href="">매칭</a></li>
 						</ul>
 					</div>
 				</div>
@@ -113,9 +113,9 @@
 					<div class="section info_area02">
 						<div class="inner">
 							<div class="info_con">
-								<h2 class="tit_type01">예약신청 안내</h2>
-								<p class="con_txt">예약신청이 어려우신가요? <br>안내 페이지에서 자세하게 설명 드립니다.</p>
-								<a href="" class="btn_info">신청방법 안내</a>
+								<h2 class="tit_type01">테니스 제품 안내</h2>
+								<p class="con_txt">테니스 제품을 구매하고 싶으신가여??<br>랭킹 1~100위까지 보여드립니다!</p>
+								<a href="" class="btn_info">랭킹 보러가기</a>
 							</div>
 						</div>
 					</div>
