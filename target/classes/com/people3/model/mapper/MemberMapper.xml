@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people3.model.mapper.MemberMapper">
+
+
+	<insert id="Register" parameterType="com.people3.model.vo.Member">
+	insert into member 
+	values(#{id}, #{password}, #{nick}, #{tel})
+	</insert>
+
+	<select id="idcheck" parameterType="java.lang.String" resultType="com.people3.model.vo.Member">
+	select * from member where id=#{id}
+	</select>
+	
+	<select id="login" parameterType="com.people3.model.vo.Member" resultType="com.people3.model.vo.Member">
+	select * from member where id=#{id} and password=#{password}
+	</select>
+</mapper>

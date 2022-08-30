@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -83,28 +85,28 @@
 					<div class="tit_area">
 						<h1 class="tit_type01">회원가입</h1>
 					</div>
-					<form>
+					<form action="${contextPath}/Register.do" method="post">
 						<div class="join_area">
 							<div class="join_box">
 								<p class="join_form">
 									<span class="label">아이디</span>
-									<input type="text" id="user_id" name="user_id" class="c_input" title="아이디 입력" placeholder="아이디">
+									<input type="text" id="id" name="id" class="c_input" title="아이디 입력" maxlength="20" required="required" placeholder="아이디">
 								</p>
 								<p class="join_form">
 									<span class="label">비밀번호</span>
-									<input type="password" id="user_pwd" name="user_pwd" class="c_input" title="비밀번호 입력" placeholder="비밀번호">
+									<input type="password" id="password1" name="password" class="c_input" title="비밀번호 입력" maxlength="20"  minlength="8" required="required" placeholder="비밀번호">
 								</p>
 								<p class="join_form">
 									<span class="label">비밀번호 확인</span>
-									<input type="password" id="user_pwd" name="user_pwd_2" class="c_input" title="비밀번호 입력" placeholder="비밀번호 확인">
+									<input type="password" id="password2" name="password2" class="c_input" title="비밀번호 입력" placeholder="비밀번호 확인">
 								</p>
 								<p class="join_form">
 									<span class="label">닉네임</span>
-									<input type="text" id="user_nick" name="user_nick" class="c_input" title="닉네임 입력" placeholder="닉네임">
+									<input type="text" id="nick" name="nick" class="c_input" title="닉네임 입력" required="required" placeholder="닉네임">
 								</p>
 								<p class="join_form">
 									<span class="label">전화번호</span>
-									<input type="text" id="user_tel" name="user_pwd_2" class="c_input" title="전화번호 입력" placeholder="전화번호">
+									<input type="text" id="tel" name="tel" class="c_input" title="전화번호 입력" required="required" placeholder="전화번호">
 								</p>
 								<div class="join_form" style = "text-align:center;">
 									<button href="#none" class="btn_base on">회원 가입</button>
@@ -164,6 +166,45 @@
 				} else {
 					$('.list_site')[0].style.display = 'none'
 				}
+			})
+			
+			$('#id').on('focusout',function(){
+				 let id = $('#id').val()
+				$.ajax({
+					type : "get",
+					url : "idcheck.do",
+					data : {"id": id},
+					dataType : "json",
+					success : idcheck,
+					error : function () { alert("error");}
+					
+					
+					
+					
+				})
+			} )
+			
+			function idcheck(data) { // data =[{},{},{},{},,,,]
+  				if (data.length==0) {
+					alert("사용할 수 있는 아이디 입니다.");
+				}else {
+					alert("사용할 수 없는 아이디 입니다.");
+					$('#id').val("");
+				}
+			
+			}
+			
+			$('#password2').on('focusout',function(){
+				 let password2 = $('#password2').val()
+				 let password1 = $('#password1').val()
+				 
+				 if (password2==password1) {
+					 
+				}else {
+					alert("비밀번호가 일치하지 않습니다.");
+				
+				}
+				 
 			})
 		</script>
 	</body>
