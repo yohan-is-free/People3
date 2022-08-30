@@ -41,4 +41,6 @@ public class HomeController {
 	public String boardlistForm() {
 		return "boardlist";
 	}
+	
+	
 }
