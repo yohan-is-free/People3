@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.people3.model.mapper.TestMapper;
 import com.people3.model.vo.Board;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 public class HomeController {
 	
@@ -34,7 +35,5 @@ public class HomeController {
 	public String main() {
 		return "main";
 	}
-	
-	
 	
 }

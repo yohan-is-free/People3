@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people3.model.mapper.TennisMapper">
+    <select id = "selectTA" resultType = "com.people3.model.vo.GJTennis">
+    	select * from gj_tennis;
+    </select>
+    
+    <select id = "selectInfo" resultType = "com.people3.model.vo.GJTennis">
+    	select * from gj_tennis where courtno = #{courtNo};
+    </select>
+    
+    <select id = "courtCnt" resultType = "com.people3.model.vo.Cnt">
+    	select count(courtcode) as cnt from tennis_court where courtno = #{courtNo};
+    </select>
+    
+    <select id = "isPossibleLesson" resultType = "com.people3.model.vo.Cnt">
+    	select count(coachno) as cnt from coach where courtno = #{courtNo};
+    </select>
+    
+    <select id = "selectCourts" resultType = "com.people3.model.vo.TennisCourt">
+    	select * from tennis_court where courtno = #{courtNo};
+    </select>
+    
+    <select id = "selectCoachs" resultType = "com.people3.model.vo.Coach">
+       select * from coach where courtno = #{courtNo};
+    </select>
+    
+    <select id = "selectCTS" parameterType="com.people3.model.vo.CTS" resultType="java.lang.String">
+    	select * from lessontime where ltime not in (select revtime from reservation where revdate = #{revdate} and courtcode=#{revcourt});
+    </select>
+    
+    <select id = "selectCLS" parameterType="com.people3.model.vo.CLS" resultType="java.lang.String">
+    	select * from lessontime where ltime not in (select revtime from reservation where revdate = #{revdate} and (courtcode=#{revcourt} or coachno=#{revcoach}));
+    </select>
+    
+    <insert id = "insertCourtResrv" parameterType="com.people3.model.vo.Reservation">
+    	insert into reservation values(#{id},null,#{courtCode},#{revDate},#{revTime},#{revType});
+    </insert>
+    
+    <insert id = "insertLessonResrv" parameterType="com.people3.model.vo.Reservation">
+    	insert into reservation values(#{id},#{coachNo},#{courtCode},#{revDate},#{revTime},#{revType});
+    </insert>
+    
+    <select id = "selectEvents" resultType="com.people3.model.vo.Reservation">
+    	select * from reservation where id = #{id} and revdate >= curdate();
+    </select>
+    
+    <delete id = "deleteResrv" parameterType="com.people3.model.vo.Reservation">
+    	delete from reservation where id = #{id} and revdate = #{revDate} and courtcode = #{courtCode} and revtime like #{revTime};
+    </delete>
+</mapper>
