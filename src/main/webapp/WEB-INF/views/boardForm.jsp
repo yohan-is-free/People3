@@ -115,7 +115,7 @@
 								
 								<tr>
 									<td>작성자</td>
-									<td><input type="text" name="id" class="form-control" /></td>
+									<td><input type="text" name="id" class="form-control" value="${member.id}" readonly="readonly" /></td>
 								</tr>
 
 								<tr>

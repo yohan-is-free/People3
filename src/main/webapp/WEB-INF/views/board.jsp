@@ -27,7 +27,7 @@
 					</strong>
 				</div>
 				<ul class="top_menu">
-					<li><a href="./login.do">로그아웃</a></li>
+					<li><a href="./logout.do">로그아웃</a></li>
 
 				</ul>
 			</div>
@@ -106,6 +106,7 @@
 								<td>제목</td>
 								<td>작성자</td>
 								<td>작성일</td>
+								<td>조회수</td>
 							</tr>
 							 <c:forEach var="vo" items="${list}">
 							       <tr>
@@ -113,6 +114,7 @@
 							       <td><a href="boardContent.do?boardNo=${vo.boardNo}">${vo.title}</a></td>
 							       <td>${vo.id}</td>
 							       <td>${vo.date}</td>
+							       <td>${vo.count}</td>
 							       </tr>
 							 </c:forEach>
 							

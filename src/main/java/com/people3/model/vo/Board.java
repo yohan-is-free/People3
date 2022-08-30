@@ -10,6 +10,7 @@ public class Board {
 	private String title;
 	private String content;
 	private String date;
+	private String count;
 	private String boardType; // 공지사항 구분자
 	
 }

@@ -35,15 +35,6 @@ public class HomeController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/login.do")
-	public String loginForm() {
-		return "login";
-	}
-	
-	@RequestMapping(value = "/join.do")
-	public String joinForm() {
-		return "join";
-	}
 	
 	
 }

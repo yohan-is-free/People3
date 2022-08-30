@@ -50,6 +50,8 @@ public class BoardController {
 	@GetMapping("/boardContent")
 	public String boardContent(@RequestParam("boardNo") int boardNo, Model model) {
 		Board vo = mapper.boardContent(boardNo);
+//		조회수 증가
+		mapper.boardCount(boardNo);
 		model.addAttribute("vo", vo);
 		return "boardContent";
 	}
