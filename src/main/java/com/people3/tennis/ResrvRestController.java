@@ -113,9 +113,11 @@ public class ResrvRestController {
 	}
 	
 	@PostMapping(value = "/cancelResrv.do", produces = "application/json; charset=utf8")
-	public String cancelResrv(Reservation resrv) {
+	public String cancelResrv(Reservation resrv, HttpSession session) {
 		JsonObject obj = new JsonObject();
-		resrv.setId("test");
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		resrv.setId(id);
 		// log.info("data ===> {}",resrv);
 		try {
 			tmapper.deleteResrv(resrv);
