@@ -301,13 +301,21 @@
 			})
 			
 			$('.btn-resrv').on('click',() => {
-				if(true) {
-					
-					
-					location.href="./resrvDetail.do?courtNo="+idx
-				} else {
-					Swal.fire("로그인 후에 이용가능합니다.").then(() => {location.href="./login.do"});
-				}
+				$.ajax({
+					url : "./loginCheck.do",
+					type : "post",
+					dataType : 'json',
+					success : function(result) {
+						if(result == true) {
+							location.href="./resrvDetail.do?courtNo="+idx
+						} else {
+							Swal.fire("로그인 후에 이용가능합니다.").then(() => {location.href="./login.do"});
+						}
+					},
+					error : function(e) {
+						console.log(e);
+					}
+				})
 			})
 			
 		</script>
