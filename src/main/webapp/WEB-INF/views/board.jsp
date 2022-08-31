@@ -33,7 +33,7 @@
 							<li><a href="./join.do">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a>${sessionScope.member.nick}님</a></li>
+							<li><a>${sessionScope.member.nick} 님</a></li>
 							<li><a href="./logout.do">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
