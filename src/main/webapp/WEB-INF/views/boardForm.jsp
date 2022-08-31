@@ -27,37 +27,49 @@
 					</strong>
 				</div>
 				<ul class="top_menu">
-					<li><a href="./login.do">로그아웃</a></li>
-
+					<c:choose>
+						<c:when test = "${empty sessionScope.member}">
+							<li><a href="./login.do">로그인</a></li>
+							<li><a href="./join.do">회원가입</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a>${sessionScope.member.nick}님</a></li>
+							<li><a href="./logout.do">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>				
 				</ul>
 			</div>
 			<div class="inner">
 				<nav class="gnb">
 					<ul>
 						<li class="pc"><a href="./main.do" class="home">메인</a></li>
-						<li><a href="" class="cart">예약내역</a></li>
-						<li><a href="" class="mypage">마이페이지</a></li>
+						<li><a href="./resrvShow.do" class="cart">예약내역</a></li>
+						<li><a class="mypage">마이페이지</a></li>
 					</ul>
 				</nav>
 				<a class="pc_allmenu"><span>전체메뉴</span></a>
 				<div class="allmenu_area" style="display: none;">
 					<h2 class="tit_type02">메뉴바로가기</h2>
 					<ul class="all_menu">
-						<li><a href="">예약신청</a></li>
-						<li><a href="">게시판</a></li>
-						<li><a href="">신청방법안내</a></li>
-						<li><a href="">시설이용안내</a></li>
+						<li><a href="./resrv.do">예약신청</a></li>
+						<li><a href="./boardlist.do">게시판</a></li>
+						<li><a href="./productlist.do">테니스 상품 정보</a></li>
+						<li><a href="./match.do">매칭</a></li>
 					</ul>
 					<ul class="all_menu">
 						<li><a href="./join.do">회원가입</a></li>
-						<li><a href="">예약내역</a></li>
-						<li><a href="">마이페이지</a></li>
-						<li><a href="">공지사항</a></li>
+						<li><a href="./resrvShow.do"">예약내역</a></li>
+						<li><a>마이페이지</a></li>
+						<li><a>공지사항</a></li>
 					</ul>
 
-					<div class="login_before">
-						<a href="./login.do" class="btn_base off">로그인</a>
-					</div>
+					<c:choose>
+						<c:when test = "${empty member}">
+							<div class="login_before">
+								<a href="./login.do" class="btn_base off">로그인</a>
+							</div>
+						</c:when>
+					</c:choose>
 
 					<a class="btn_close">닫기</a>
 				</div>
@@ -84,10 +96,10 @@
 			<div class="section sticky_area">
 				<div class="inner">
 					<ul class="sticky_menu">
-						<li><a href="">예약신청</a></li>
-						<li><a href="">게시판</a></li>
-						<li><a href="">신청방법안내</a></li>
-						<li><a href="">시설이용안내</a></li>
+						<li><a href="./resrv.do">예약신청</a></li>
+						<li><a href="./board.do">게시판</a></li>
+						<li><a href="./productlist.do">테니스 상품 정보</a></li>
+						<li><a href="./match.do">매칭</a></li>
 					</ul>
 				</div>
 			</div>
@@ -122,6 +134,7 @@
 									<td colspan="2" align="center">
 										<button type="submit" class="btn btn-success btn-xs">등록</button>
 										<button type="reset" class="btn btn-success btn-xs">취소</button>
+										<a href = "board.do" class ="btn btn-success btn-xs">목록</a>
 									</td>
 								</tr>
 							</table>
@@ -130,37 +143,29 @@
 				</div>
 			</div>
 
-			<div id="footer">
-				<div class="footer_top">
-					<div class="inner">
-						<ul class="foot_menu">
-							<li><a href=""><b style="color: #F29600;">개인정보처리방침</b></a></li>
-							<li><a href=""><b>이용약관</b></a></li>
-						</ul>
-						<div class="family_site">
-							<div class="con_site">
-								<a class="tit_site">관련사이트</a>
-								<ul class="list_site" style="display: none;">
-									<li><a href="">국민체육진흥공단</a></li>
-									<li><a href="">문화체육관광부</a></li>
-									<li><a href="">경륜경정사업본부</a></li>
-									<li><a href="">KCYCLE 경륜</a></li>
-									<li><a href="">KBOAT 경정</a></li>
-									<li><a href="">서울올림픽파크텔</a></li>
-									<li><a href="">한국스포츠정책과학원</a></li>
-									<li><a href="">서울올림픽기념관</a></li>
-									<li><a href="">소마미술관</a></li>
-									<li><a href="">올림픽공원</a></li>
-									<li><a href="">국민체력센터</a></li>
-									<li><a href="">국민권익위원회</a></li>
-								</ul>
-							</div>
+		</div>
+		
+		<div id="footer">
+			<div class="footer_top">
+				<div class="inner">
+					<ul class="foot_menu">
+						<li><a href=""><b style="color: #F29600;">개인정보처리방침</b></a></li>
+						<li><a href=""><b>이용약관</b></a></li>
+					</ul>
+					<div class="family_site">
+						<div class="con_site">
+							<a class="tit_site">관련사이트</a>
+							<ul class="list_site" style="display: none;">
+								<li><a href="https://smhrd.or.kr/">스마트인재개발원</a></li>
+								<li><a href="https://gj-aischool.or.kr/">광주인공지능사관학교</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
+		</div>
 		<script>
 			$('.pc_allmenu').on('click',(e) => {
 				$('.allmenu_area')[0].style.display = 'block'

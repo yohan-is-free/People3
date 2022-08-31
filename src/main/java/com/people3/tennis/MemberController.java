@@ -2,7 +2,6 @@ package com.people3.tennis;
 
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.people3.model.mapper.BoardMapper;
 import com.people3.model.mapper.MemberMapper;
 import com.people3.model.vo.Member;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class MemberController {
 
@@ -49,7 +50,9 @@ public class MemberController {
 		if (member==null) {
 			return "login";
 		}
+		log.info("member ===> {}",member);
 		session.setAttribute("member", member);
+		log.info("member ===> {}",session.getAttribute("member"));
 		return "main";
 	}
 	
