@@ -132,10 +132,18 @@
 							       </tr>
 							 </c:forEach>
 							
-
+								
 							<tr>
 								<td colspan="5" style="width: 10%; text-align: right; padding: 0; padding-right: 10px;"  >
-									<a href="boardForm.do" class="btn btn-link btn-lg">글쓰기</a>
+									<c:choose>
+										<c:when test = "${empty sessionScope.member}">
+											
+										</c:when>
+										<c:otherwise>
+											<a href="boardForm.do" class="btn btn-link btn-lg">글쓰기</a>
+										</c:otherwise>
+									</c:choose>
+									
 								</td>
 							</tr>
 						</table>

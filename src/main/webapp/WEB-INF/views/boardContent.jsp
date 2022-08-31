@@ -133,9 +133,16 @@
 									<td>${vo.date}</td>
 								</tr>
 								<tr>
-									<td colspan="2" align="center" style="text-align: center; padding:0";>
-										<a href="boardUpdateForm.do?boardNo=${vo.boardNo}" class="btn btn-link btn-lg">수정화면</a>
-										<a href="boardDelete.do/${vo.boardNo}" class="btn btn-link btn-lg">삭제</a>
+									<td colspan="2" align="center" style="text-align: right; padding:0";>
+									<c:choose>
+										<c:when test = "${vo.id == sessionScope.member.id}">
+											<a href="boardUpdateForm.do?boardNo=${vo.boardNo}" class="btn btn-link btn-lg">수정화면</a>
+											<a href="boardDelete.do/${vo.boardNo}" class="btn btn-link btn-lg">삭제</a>
+										</c:when>
+										<c:otherwise>
+											
+										</c:otherwise>
+									</c:choose>
 										<a href="board.do" class="btn btn-link btn-lg">목록</a>
 									</td>
 								</tr>
