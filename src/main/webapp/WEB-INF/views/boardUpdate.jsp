@@ -52,7 +52,7 @@
 					<h2 class="tit_type02">메뉴바로가기</h2>
 					<ul class="all_menu">
 						<li><a href="./resrv.do">예약신청</a></li>
-						<li><a href="./boardlist.do">게시판</a></li>
+						<li><a href="./board.do">게시판</a></li>
 						<li><a href="./productlist.do">테니스 상품 정보</a></li>
 						<li><a href="./match.do">매칭</a></li>
 					</ul>
