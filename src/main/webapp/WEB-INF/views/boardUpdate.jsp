@@ -105,19 +105,16 @@
 
 			<div id="content">
 				<div class="tit_area">
-					<h1 class="tit_type01">게시판</h1>
+					<h1 class="tit_type01">자유게시판</h1>
 				</div>
 				<div class="container">
-					<!--<h2>MVC02</h2>  -->
-					<div class="panel panel-default">
-						<div class="panel-heading">BOARD</div>
-						
+					<div>
 						<form action="boardUpdate.do" method="post">
 						<input type="hidden" name="boardNo" value="${vo.boardNo}"/>
-						<table class="table table-dordered">
+						<table class="table" style="font-size: 18px; text-align: center;">
 							<tr>
-							<td>제목</td>
-							<td><input type="text" name="title" class="form-control" value="${vo.title}"> </td>
+							<td style="width: 10%;">제목</td>
+							<td ><input type="text" name="title" class="form-control" value="${vo.title}"> </td>
 							</tr>
 							
 							<tr>
@@ -131,11 +128,11 @@
 							</tr>
 							
 							<tr>
-							<td colspan="2" align="center">
-								<button type="submit" class="btn btn-success btn-xs">수정</button>
-								<button type="reset" class="btn btn-success btn-xs">취소</button>
-								<button type="button" class="btn btn-success btn-xs"
-									onclick="location.href='boardList.do'">목록</button>
+							<td colspan="2" align="center" style="text-align: center; padding:0";>
+								<button type="submit" class="btn btn-link btn-lg">수정</button>
+								<button type="reset" class="btn btn-link btn-lg">취소</button>
+								<button type="button" class="btn btn-link btn-lg"
+									onclick="location.href='board.do'">목록</button>
 							</td>
 						</tr>
 						</table>

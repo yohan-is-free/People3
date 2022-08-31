@@ -105,17 +105,15 @@
 
 			<div id="content">
 				<div class="tit_area">
-					<h1 class="tit_type01">게시판</h1>
+					<h1 class="tit_type01">자유게시판</h1>
 				</div>
 				<div class="container">
 					<!--<h2>MVC02</h2>  -->
-					<div class="panel panel-default">
-						<div class="panel-heading">BOARD</div>
-
-						<form action="boardInsert.do" method="post">
-							<table class="table">
+					<div>
+						<form action="boardInsert.do" method="post" >
+							<table class="table" style="font-size: 18px; text-align: center;">
 								<tr>
-									<td>제목</td>
+									<td style="width: 10%;">제목</td>
 									<td><input type="text" name="title" class="form-control" /></td>
 								</tr>
 								
@@ -130,13 +128,15 @@
 								</tr>
 
 								<tr>
-									<td colspan="2" align="center">
-										<button type="submit" class="btn btn-success btn-xs">등록</button>
-										<button type="reset" class="btn btn-success btn-xs">취소</button>
-										<a href = "board.do" class ="btn btn-success btn-xs">목록</a>
+									<td colspan="2" style="text-align: center; padding: 0;">
+										<button type="submit" class="btn btn-link btn-lg">등록</button>
+										<button type="reset" class="btn btn-link btn-lg">취소</button>
+										<a href = "board.do" class ="btn btn-link btn-lg">목록</a>
 									</td>
 								</tr>
+							
 							</table>
+							
 						</form>
 					</div>
 				</div>

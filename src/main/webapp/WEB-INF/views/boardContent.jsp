@@ -107,17 +107,14 @@
 
 			<div id="content">
 				<div class="tit_area">
-					<h1 class="tit_type01">게시판</h1>
+					<h1 class="tit_type01">자유게시판</h1>
 				</div>
 				<div class="container">
-					<!--<h2>MVC02</h2>  -->
-					<div class="panel panel-default">
-						<div class="panel-heading">BOARD</div>
-
+					<div>
 						<form action="boardInsert.do" method="post">
-							<table class="table">
+							<table class="table" style="font-size: 18px; text-align: center;">
 								<tr>
-									<td>제목</td>
+									<td style="width: 10%;">제목</td>
 									<td>${vo.title}</td>
 								</tr>
 								
@@ -136,10 +133,10 @@
 									<td>${vo.date}</td>
 								</tr>
 								<tr>
-									<td colspan="2" align="center">
-										<a href="boardUpdateForm.do?boardNo=${vo.boardNo}" class="btn btn-primary btn-xs">수정화면</a>
-										<a href="boardDelete.do/${vo.boardNo}" class="btn btn-warning btn-xs">삭제</a>
-										<a href="board.do" class="btn btn-info btn-xs">목록</a>
+									<td colspan="2" align="center" style="text-align: center; padding:0";>
+										<a href="boardUpdateForm.do?boardNo=${vo.boardNo}" class="btn btn-link btn-lg">수정화면</a>
+										<a href="boardDelete.do/${vo.boardNo}" class="btn btn-link btn-lg">삭제</a>
+										<a href="board.do" class="btn btn-link btn-lg">목록</a>
 									</td>
 								</tr>
 							</table>

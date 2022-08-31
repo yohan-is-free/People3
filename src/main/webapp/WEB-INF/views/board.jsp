@@ -86,6 +86,7 @@
 						<br>
 						<br>
 						<br>
+						<br>
 						<br> 셋이 왔어요 
 						<strong class="stress">LOVETENNIS</strong>
 					</p>
@@ -110,15 +111,17 @@
 				<div class="container">
 					<!--<h2>MVC02</h2>  -->
 					<div class="panel panel-default">
-						<div class="panel-heading">BOARD</div>
-						<table class="table table-dordered">
-							<tr>
-								<td>번호</td>
-								<td>제목</td>
-								<td>작성자</td>
-								<td>작성일</td>
-								<td>조회수</td>
+						
+						<table class="table table-dordered" style="font-size: 20px; text-align: center;">
+							<thead class="table-dark !important;" >
+							<tr >
+								<th style="width: 10%; text-align: center;">번호</th>
+								<th style="width: 50%; text-align: center;">제목</th>
+								<th style="width: 10%; text-align: center;">작성자</th>
+								<th style="width: 20%; text-align: center;">작성일</th>
+								<th style="width: 10%; text-align: center;">조회수</th>
 							</tr>
+							</thead>
 							 <c:forEach var="vo" items="${list}">
 							       <tr>
 							       <td>${vo.boardNo}</td>
@@ -131,8 +134,8 @@
 							
 
 							<tr>
-								<td colspan="5">
-									<a href="boardForm.do" class="btn btn-primary btn-xs">글쓰기</a>
+								<td colspan="5" style="width: 10%; text-align: right; padding: 0; padding-right: 10px;"  >
+									<a href="boardForm.do" class="btn btn-link btn-lg">글쓰기</a>
 								</td>
 							</tr>
 						</table>
