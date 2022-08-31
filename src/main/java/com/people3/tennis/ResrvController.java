@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.people3.model.mapper.TennisMapper;
 import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.Member;
 import com.people3.model.vo.Reservation;
 import com.people3.model.vo.TennisCourt;
 
@@ -65,7 +66,9 @@ public class ResrvController {
 	
 	@PostMapping("/courtResrv.do")
 	public String saveCourtResrv(HttpSession session, Reservation resrv) {
-		resrv.setId("test");
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		resrv.setId(id);
 		resrv.setRevType("코트 사용");
 		// log.info("ResrvInfo ===> {}",resrv);
 		tmapper.insertCourtResrv(resrv);
@@ -74,7 +77,9 @@ public class ResrvController {
 	
 	@PostMapping("/lessonResrv.do")
 	public String saveLessonResrv(HttpSession session, Reservation resrv) {
-		resrv.setId("test");
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		resrv.setId(id);
 		resrv.setRevType("레슨 수강");
 		log.info("ResrvInfo ===> {}",resrv);
 		tmapper.insertLessonResrv(resrv);

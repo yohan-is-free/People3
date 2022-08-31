@@ -4,6 +4,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,7 @@ import com.people3.model.vo.CLS;
 import com.people3.model.vo.CTS;
 import com.people3.model.vo.Coach;
 import com.people3.model.vo.GJTennis;
+import com.people3.model.vo.Member;
 import com.people3.model.vo.Reservation;
 
 import lombok.RequiredArgsConstructor;
@@ -80,10 +83,13 @@ public class ResrvRestController {
 	
 	@SneakyThrows
 	@PostMapping(value = "/calendar/getall.do")
-	public String calendarGetAll() {
+	public String calendarGetAll(HttpSession session) {
 //		log.info("Event 조회");
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+		
 		List<JsonObject> events = new ArrayList<>();
-		List<Reservation> resrvs = tmapper.selectEvents("test");
+		List<Reservation> resrvs = tmapper.selectEvents(id);
 		for (Reservation resrv : resrvs) {
 //			log.info("event ===> {}",resrv);
 			String[] tmp = null;

@@ -20,6 +20,28 @@
 		</style>
 		<script type="text/javascript" src = "resources/js/jquery.min.js"></script>
 		<script type="text/javascript" src = "//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			$(document).ready(function() {
+				$.ajax({
+					url : "./loginCheck.do",
+					type : "post",
+					dataType : 'json',
+					success : function(result) {
+						if (result == false) {
+							Swal.fire({
+								text:'로그인 후 이용가능한 서비스입니다.',
+								icon : 'warning'
+							}).then(() => {
+								location.href="login.do";
+							})
+						}
+					},
+					error : function(e) {
+						console.log(e);
+					}
+				})
+			}) 
+		</script>
 	</head>
 	<body>
 		<div id="skipNavi">
