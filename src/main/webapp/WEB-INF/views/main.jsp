@@ -121,7 +121,7 @@
 						<div class="inner">
 							<div class="info_con">
 								<h2 class="tit_type01">테니스 제품 안내</h2>
-								<p class="con_txt">테니스 제품을 구매하고 싶으신가여??<br>랭킹 1~100위까지 보여드립니다!</p>
+								<p class="con_txt">테니스 제품을 구매하고 싶으신가요??<br>랭킹 1~100위까지 보여드립니다!</p>
 								<a href="./productlist.do" class="btn_info">랭킹 보러가기</a>
 							</div>
 						</div>
