@@ -129,7 +129,7 @@
 				<div class="inner">
 					<nav class="gnb">
 						<ul>
-							<li class="pc"><a class="home">메인</a></li>
+							<li class="pc"><a class="home" href='./'>메인</a></li>
 							<li><a href="./resrvShow.do" class="cart">예약내역</a></li>
 							<li><a class="mypage">마이페이지</a></li>
 						</ul>
@@ -139,7 +139,7 @@
 						<h2 class="tit_type02">메뉴바로가기</h2>
 						<ul class="all_menu">
 							<li><a href="./resrv.do">예약신청</a></li>
-							<li><a href="./boardlist.do">게시판</a></li>
+							<li><a href="./board.do">게시판</a></li>
 							<li><a href="./productlist.do">테니스 상품 정보</a></li>
 							<li><a href="./match.do">매칭</a></li>
 						</ul>

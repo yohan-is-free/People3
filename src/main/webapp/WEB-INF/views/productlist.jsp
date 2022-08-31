@@ -49,7 +49,7 @@
 							<li><a href="./join.do">회원가입</a></li>
 						</C:when>
 						<C:otherwise>
-							<li><a>${sessionScope.member.nick}님</a></li>
+							<li><a>${sessionScope.member.nick} 님</a></li>
 							<li><a href="./logout.do">로그아웃</a></li>
 						</C:otherwise>
 					</C:choose>
@@ -68,7 +68,7 @@
 					<h2 class="tit_type02">메뉴바로가기</h2>
 					<ul class="all_menu">
 						<li><a href="./resrv.do">예약신청</a></li>
-						<li><a href="./boardlist.do">게시판</a></li>
+						<li><a href="./board.do">게시판</a></li>
 						<li><a href="./productlist.do">테니스 상품 정보</a></li>
 						<li><a href="./match.do">매칭</a></li>
 					</ul>
