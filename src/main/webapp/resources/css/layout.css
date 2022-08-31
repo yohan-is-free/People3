@@ -8,7 +8,8 @@
 #skipNavi a:active, #skipNavi a:focus { top:0; font-weight:bold; font-size:16px; line-height:1.5; border-bottom:3px solid #fff;}
 
 #wrap {position:relative; width:100%;}
-#wrap .inner {position:relative; max-width:1200px; margin:0 auto;}
+#wrap .inner {position:relative; max-width:1300px; margin:0 auto; }
+#wrap .inner>p {text-align: end;}
 #wrap .inner:after {content:''; display:block; clear:both;}
 #header {position:relative; height:140px; background-color:#fff;}
 #header:after {content:''; display:block; clear:both;}

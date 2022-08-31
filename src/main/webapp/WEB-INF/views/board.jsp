@@ -86,9 +86,8 @@
 						<br>
 						<br>
 						<br>
-						<br> 셋이 왔어요 <strong class="stress">L<img
-							src="resources/images/common/tennisball.png">VE
-						</strong>
+						<br> 셋이 왔어요 
+						<strong class="stress">LOVETENNIS</strong>
 					</p>
 				</div>
 			</div>

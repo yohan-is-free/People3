@@ -103,7 +103,7 @@
 	
 	    </script>
 	</head>
-	<body style = "min-width : 1200px;">
+	<body>
 		<div id="skipNavi">
 			<a href="#content">본문 바로가기</a>
 		</div>
@@ -168,9 +168,9 @@
 				<div class="section visual_area">
 					<div class="inner">
 						<p class="txt">
-							<br><br><br><br><br><br>
-							셋이 왔어요
-							<strong class="stress">L<img src ="resources/images/common/tennisball.png">VE</strong>
+							<br><br><br><br><br><br><br> 
+							셋이 왔어요 
+						<strong class="stress">LOVETENNIS</strong>
 						</p>
 					</div>
 				</div>
