@@ -34,7 +34,7 @@
 				<div class="inner">
 					<nav class="gnb">
 						<ul>
-							<li class="pc"><a class="home">메인</a></li>
+							<li class="pc"><a class="home" href='./'>메인</a></li>
 							<li><a href="./resrvShow.do" class="cart">예약내역</a></li>
 							<li><a class="mypage">마이페이지</a></li>
 						</ul>
