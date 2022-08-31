@@ -25,7 +25,7 @@
 								<li><a href="./join.do">회원가입</a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a>${sessionScope.member.nick}님</a></li>
+								<li><a>${sessionScope.member.nick} 님</a></li>
 								<li><a href="./logout.do">로그아웃</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -73,7 +73,7 @@
 				<div class="section visual_area">
 					<div class="inner">
 						<p class="txt">
-							<br><br><br><br><br><br>
+							<br><br><br><br><br><br><br>
 							셋이 왔어요
 							<strong class="stress">LOVETENNIS</strong>
 						</p>
@@ -104,7 +104,7 @@
 								<ul class="notice">
 									<li>
 										<a>
-											테니스 대회 안내 (2022년 8월) 
+											테니스 대회 안내 (2022년 10월) 
 										</a>
 									</li>
 								</ul>
@@ -112,7 +112,8 @@
 							</div>
 							<div class="info_con03">
 								<h2 class="tit_type01">고객센터 안내</h2>
-								<p class="txt">People3 <strong>02-XXXX-XXXX</strong></p>
+								<p class="txt">People3 <strong>062-XXXX-XXXX</strong></p>
+								<p class="txt">인공지능 사관학교 <strong>062-655-3506</strong></p>
 							</div>
 						</div>
 					</div>
