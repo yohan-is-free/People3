@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -113,16 +114,24 @@
 						<strong style="font-size: 72px;">L<img src ="resources/images/common/tennisball.png">VE</strong>
 					</div>
 					<ul class="top_menu">
-						<li><a href="./login.do">로그인</a></li>
-						<li><a href="./join.do">회원가입</a></li>
+						<c:choose>
+							<c:when test = "${empty sessionScope.member}">
+								<li><a href="./login.do">로그인</a></li>
+								<li><a href="./join.do">회원가입</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a>${sessionScope.member.nick}님</a></li>
+								<li><a href="./logout.do">로그아웃</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 				<div class="inner">
 					<nav class="gnb">
 						<ul>
 							<li class="pc"><a class="home">메인</a></li>
-							<li><a href="./resrvShow.do"" class="cart">예약내역</a></li>
-							<li><a href="" class="mypage">마이페이지</a></li>
+							<li><a href="./resrvShow.do" class="cart">예약내역</a></li>
+							<li><a class="mypage">마이페이지</a></li>
 						</ul>
 					</nav>
 					<a class="pc_allmenu"><span>전체메뉴</span></a>
@@ -131,19 +140,23 @@
 						<ul class="all_menu">
 							<li><a href="./resrv.do">예약신청</a></li>
 							<li><a href="./boardlist.do">게시판</a></li>
-							<li><a href="">신청방법안내</a></li>
-							<li><a href="">시설이용안내</a></li>
+							<li><a href="./productlist.do">테니스 상품 정보</a></li>
+							<li><a href="./match.do">매칭</a></li>
 						</ul>
 						<ul class="all_menu">
 							<li><a href="./join.do">회원가입</a></li>
 							<li><a href="./resrvShow.do"">예약내역</a></li>
-							<li><a href="">마이페이지</a></li>
-							<li><a href="">공지사항</a></li>
+							<li><a>마이페이지</a></li>
+							<li><a>공지사항</a></li>
 						</ul>
 						
-						<div class="login_before">
-							<a href="./login.do" class="btn_base off">로그인</a>
-						</div>
+						<c:choose>
+							<c:when test = "${empty member}">
+								<div class="login_before">
+									<a href="./login.do" class="btn_base off">로그인</a>
+								</div>
+							</c:when>
+						</c:choose>
 
 						<a class="btn_close">닫기</a>
 					</div>
@@ -166,9 +179,9 @@
 					<div class="inner">
 						<ul class="sticky_menu">
 							<li><a href="./resrv.do">예약신청</a></li>
-							<li><a href="./boardlist.do">게시판</a></li>
-							<li><a href="">신청방법안내</a></li>
-							<li><a href="">시설이용안내</a></li>
+							<li><a href="./board.do">게시판</a></li>
+							<li><a href="./productlist.do">테니스 상품 정보</a></li>
+							<li><a href="./match.do">매칭</a></li>
 						</ul>
 					</div>
 				</div>

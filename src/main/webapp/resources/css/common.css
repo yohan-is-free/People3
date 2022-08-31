@@ -3,6 +3,17 @@
 @import url(layout.css);
 @import url(content.css);
 
+@font-face {
+    font-family: 'Goyang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Goyang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'Goyang';
+}
+
 .tit_area {clear:both;}
 h1.tit_type01 {padding:60px 0 50px; font-size:44px; font-weight:700; color:#222; line-height:1; text-align:center;}
 .tit_type02 {padding-bottom:20px; font-size:24px; font-weight:500; color:#222; line-height:1;}
