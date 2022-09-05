@@ -106,7 +106,7 @@
 
 			<div id="content">
 				<div class="tit_area">
-					<h1 class="tit_type01">게시판</h1>
+					<h1 class="tit_type01">자유게시판</h1>
 				</div>
 				<div class="container">
 					<!--<h2>MVC02</h2>  -->
