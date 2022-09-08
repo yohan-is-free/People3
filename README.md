@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/93561179/189008622-211edec8-bacf-424e-acf9-aa98b2d26353.png)
+![image](https://user-images.githubusercontent.com/93561179/189010311-0c138a66-1605-453f-9c20-285d6dbed608.png)
 # LOVETENNIS(핵심 융합 프로젝트)
 - 웹 기반 테니스 장 및 레슨 예약&문의 서비스
 ## 주요 활용 기술
